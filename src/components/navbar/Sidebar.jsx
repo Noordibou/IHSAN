@@ -1,13 +1,14 @@
+import React, { useState } from "react";
 import Link from "next/link";
+import Button from "./Button";
 
-const Sidebar = ({
-    isOpen,
-    toggle
-    }) => {
+const Sidebar = ({ isOpen, toggle }) => {
+  const [isAboutUsDropdownVisible, setAboutUsDropdownVisibility] = useState(false);
+
   return (
     <>
       <div
-        className="sidebar-container fixed w-full h-full overflow-hidden justify-center bg-white grid pt-[120px] left-0 z-10"
+        className="sidebar-container fixed w-full h-full overflow-hidden justify-center bg-slate-50 grid pt-[120px] left-0 z-40"
         style={{
           opacity: `${isOpen ? "1" : "0"}`,
           top: ` ${isOpen ? "0" : "-100%"}`,
@@ -29,10 +30,57 @@ const Sidebar = ({
         </button>
 
         <ul className="sidebar-nav text-center leading-relaxed text-xl">
-          <li>
-            <Link href="/about" onClick={toggle}>
-              <p>About Us</p>
-            </Link>
+          <li className="relative group">
+            <div className="flex ">
+            <p
+              className="cursor-pointer ml-4 group-hover:text-yellow-500"
+              onClick={() => setAboutUsDropdownVisibility(!isAboutUsDropdownVisible)}
+            >
+              About Us
+            </p>
+            <span className="py-2">
+              {isAboutUsDropdownVisible ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M7 14l5-5 5 5z"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M7 10l5 5 5-5z"
+                  />
+                </svg>
+              )}
+            </span>
+            </div>
+            {isAboutUsDropdownVisible && (
+              <ul className="ml-4 ">
+                {/* Dropdown items go here */}
+                <li>
+                  <Link href="/team" onClick={toggle}>
+                    <p>Our Team</p>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/mission" onClick={toggle}>
+                    <p>Our Mission</p>
+                  </Link>
+                </li>
+              </ul>
+            )}
           </li>
           <li>
             <Link href="/services" onClick={toggle}>
@@ -44,7 +92,11 @@ const Sidebar = ({
               <p>Contacts</p>
             </Link>
           </li>
+          <li className="my-4">
+          <Button />
+          </li>
         </ul>
+        
       </div>
     </>
   );

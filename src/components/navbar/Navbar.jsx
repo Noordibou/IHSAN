@@ -1,11 +1,12 @@
 import React from "react";
 import Link from "next/link";
 import Logo from "./Logo";
+import Button from "./Button";
 
 const Navbar = ({ toggle }) => {
   return (
     <>
-      <div className="w-full h-20 bg-gray-800 sticky top-0">
+      <div className="w-full h-20 bg-slate-50 sticky top-0 z-30">
         <div className="container mx-auto px-4 h-full">
           <div className="flex justify-between items-center h-full">
             <Logo />
@@ -21,16 +22,31 @@ const Navbar = ({ toggle }) => {
                 viewBox="0 0 24 24"
               >
                 <path
-                  fill="#fff"
+                  fill="#191919"
                   d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"
                 />
               </svg>
             </button>
-            <ul className="hidden md:flex gap-x-6 text-white ">
-              <li>
+            <ul className="hidden md:flex gap-x-6 text-gray-700 ">
+              <li className="relative group">
                 <Link href="/about">
-                  <p>About Us</p>
+                  <p className="cursor-pointer group-hover:text-yellow-500">
+                    About Us
+                  </p>
                 </Link>
+                <ul className="absolute hidden  bg-slate-50 text-gray-700 p-2 rounded-md group-hover:block">
+                  {/* Dropdown items go here */}
+                  <li>
+                    <Link href="/team">
+                      <p>Our Team</p>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/mission">
+                      <p>Our Mission</p>
+                    </Link>
+                  </li>
+                </ul>
               </li>
               <li>
                 <Link href="/services">
@@ -43,6 +59,9 @@ const Navbar = ({ toggle }) => {
                 </Link>
               </li>
             </ul>
+            <div className="hidden md:block">
+              <Button />
+            </div>
           </div>
         </div>
       </div>
@@ -51,3 +70,4 @@ const Navbar = ({ toggle }) => {
 };
 
 export default Navbar;
+
