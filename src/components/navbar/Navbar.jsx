@@ -70,10 +70,11 @@
 // };
 
 // export default Navbar;
-
+'use client'
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect, useRef } from "react";
 
 const navs = [
   {
@@ -100,13 +101,13 @@ const navs = [
   },
 ];
 
-const NavigationMobile = ({ navs }) => {
+const NavigationMobile = ({ navs, isOpen, toggleNavigation }) => {
   return (
     <>
       {navs.map(({ title, subheaders }, index) => (
         <li key={index} className="">
           <p className="text-black ">{title}</p>
-          <ul className="p-2 text-black ">
+          <ul className={`p-2 text-black ${isOpen ? "block" : "hidden"}`}>
             {subheaders.map((subheader, subIndex) => (
               <li key={subIndex}>
                 {typeof subheader === "string" ? (
@@ -123,9 +124,20 @@ const NavigationMobile = ({ navs }) => {
           </ul>
         </li>
       ))}
+      <li>
+        <Link href="/membership">
+          <p
+            onClick={toggleNavigation}
+            className=" mt-3 btn  border-core-red bg-white border-2 rounded-2xl hover:bg-core-red hover:text-white hover:border-core-red text-black"
+          >
+            Join IHSAN
+          </p>
+        </Link>
+      </li>
     </>
   );
 };
+
 
 const NavigationDesktop = ({ navs }) => {
   return (
@@ -168,7 +180,13 @@ const NavigationDesktop = ({ navs }) => {
   );
 };
 
+
 function Navbar() {
+  const [isMobileNavOpen, setMobileNavOpen] = useState(false);
+
+  const toggleMobileNav = () => {
+    setMobileNavOpen(!isMobileNavOpen);
+  };
   return (
     <div className="navbar justify-between p-0 bg-white z-50 font-mont">
       <Link href="/">
@@ -199,7 +217,12 @@ function Navbar() {
         </Link>
 
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost lg:hidden"
+            onClick={toggleMobileNav}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -217,20 +240,20 @@ function Navbar() {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow  rounded-box w-52 absolute right-1 bg-white"
+            className={`menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow  rounded-box w-52 absolute right-1 bg-white ${
+              isMobileNavOpen ? "block" : "hidden"
+            }`}
           >
-            <NavigationMobile navs={navs} />
-
-            <Link legacyBehavior href="/membership">
-              <p className=" mt-3 btn  border-core-red bg-white border-2 rounded-2xl hover:bg-core-red hover:text-white hover:border-core-red text-black">
-                Join IHSAN
-              </p>
-            </Link>
+            <NavigationMobile
+              navs={navs}
+              isOpen={isMobileNavOpen}
+              toggleNavigation={toggleMobileNav}
+            />
           </ul>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Navbar;
