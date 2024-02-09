@@ -25,9 +25,9 @@ export default function Events() {
         },
       ];
   return (
-    <div className='my-8'>
-      <h1 className="text-4xl font-semibold text-center my-8">Upcoming club events</h1>
-      <EventCarousel events={event} />
+    <div className='my-8 '>
+      <h1 className="text-4xl font-semibold text-center my-8 ">Upcoming club events</h1>
+      <EventCarousel events={event}  />
     </div>
   )
 }

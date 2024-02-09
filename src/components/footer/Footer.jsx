@@ -5,7 +5,8 @@ import Link from "next/link";
 const Footer = () => {
   const socialLinks = [
     {
-      href: "ihsanhealthcareutd@gmail.com",
+     
+      href: "mailto:ihsanhealthcareutd@gmail.com",
       src:"https://img.icons8.com/material-outlined/24/FFFFFF/filled-message.png",
       width: 28,
       height: 18,
