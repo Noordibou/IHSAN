@@ -5,7 +5,8 @@ import Link from "next/link";
 const Footer = () => {
   const socialLinks = [
     {
-      href: "ihsanhealthcareutd@gmail.com",
+     
+      href: "mailto:ihsanhealthcareutd@gmail.com",
       src:"https://img.icons8.com/material-outlined/24/FFFFFF/filled-message.png",
       width: 28,
       height: 18,
@@ -55,7 +56,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="px-6 pt-4 pb-3 text-[#FEFAFA] bg-core-red bottom-[0] relative">
+    <footer className="px-6 pt-4 pb-3  text-[#FEFAFA] bg-core-red bottom-[0] relative">
       <div className="container mx-auto ">
         <div className="grid grid-cols-3 gap-10 text-xs">
           <div className="flex flex-col my-2">
