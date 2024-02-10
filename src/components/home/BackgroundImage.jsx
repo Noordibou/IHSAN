@@ -14,12 +14,12 @@ function HomeBackgroundImage() {
                 alt="Home Background Image"
                 aria-label='Home Background Image'
             />
-            <div className='absolute top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-bodyColor px-8 text-container shadow-md bg-white bg-opacity-60 rounded'>
+            <div className='absolute top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-main px-8 text-container shadow-md bg-white bg-opacity-40 rounded'>
         <h1 className='text-2xl md:text-4xl font-semibold mb-2 font-titleFont '>
             Welcome to IHAUTD
         </h1>
         
-        <p className='text-sm md:text-lg mb-4'>
+        <p className='text-sm md:text-lg mb-4 font-bodyFont'>
         Ihsan Healthcare Association at University of Texas at Dallas
         </p>
       </div>

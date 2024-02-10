@@ -128,7 +128,7 @@ const NavigationMobile = ({ navs, isOpen, toggleNavigation }) => {
         <Link href="/membership">
           <p
             onClick={toggleNavigation}
-            className=" mt-3 btn  border-core-red bg-white border-2 rounded-2xl hover:bg-core-red hover:text-white hover:border-core-red text-black"
+            className=" mt-3 btn  bg-main text-white border-secondary border-2 rounded-2xl hover:bg-secondary hover:text-white hover:border-secondary"
           >
             Join IHSAN
           </p>
@@ -209,8 +209,7 @@ function Navbar() {
       <div>
         <Link href="/membership">
           <div
-            className="btn ml-5 mr-3 hidden md:flex bg-white border-core-red border-2 rounded-2xl hover:bg-core-red hover:text-white hover:border-core-red text-black"
-            aria-label="navigate to career help page"
+            className="btn ml-5 mr-3 hidden md:flex bg-main text-white border-secondary border-2 rounded-2xl hover:bg-secondary hover:text-white hover:border-secondary "
           >
             Join IHSAN
           </div>
