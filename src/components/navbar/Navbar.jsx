@@ -191,12 +191,12 @@ function Navbar() {
     <div className="navbar justify-between p-0 bg-white z-50 font-mont">
       <Link href="/">
         <Image
-          src="/logo.jpg"
-          width={48}
-          height={20}
-          alt="Bottomless Logo"
+          src="/logo1.png"
+          width={120}
+          height={70}
+          alt="IHSAN logo"
           aria-label="Logo and link to go to homepage"
-          className="mx-3"
+          className="mx-3 w-20"
         ></Image>
       </Link>
       {/* <div className="navbar-start"> */}

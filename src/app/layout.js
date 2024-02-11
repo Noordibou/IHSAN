@@ -11,13 +11,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="w-screen">
        <head>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Mono&display=swap" rel="stylesheet" />
       </head>
-      <body >
+      {/* <link rel="icon" href="/logo1.png" sizes="32X32" /> */}
+      <body  >
         <Navbar />
         {children }
         <Footer />

@@ -66,7 +66,7 @@ const Footer = () => {
                 width={80}
                 height={11}
                 alt="logo"
-                className="cursor-pointer ml-3"
+                className="cursor-pointer ml-3 rounded-xl"
               />
             </Link>
           </div>
