@@ -188,7 +188,7 @@ function Navbar() {
     setMobileNavOpen(!isMobileNavOpen);
   };
   return (
-    <div className="navbar justify-between p-0 bg-white z-50 font-mont">
+    <div className="navbar justify-between p-0 bg-white z-50 font-mont shadow">
       <Link href="/">
         <Image
           src="/logo1.png"

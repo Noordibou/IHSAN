@@ -4,7 +4,7 @@ import Button from '../navbar/Button';
 
 function HomeBackgroundImage() {
     return (
-        <div className="relative w-screen bg-transparent">
+        <div className="relative  bg-transparent">
 
             <Image
                 src="/image-holder2.webp"

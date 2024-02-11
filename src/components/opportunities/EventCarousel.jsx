@@ -39,7 +39,7 @@ const EventCarousel = ({ events }) => {
           },
         },
       }}
-      className=" mx-10 pb-12 pt-8 w-screen "
+      className=" mx-10 pb-12 pt-8 "
     >
       {events.map((event, index) => (
         <SplideSlide key={index} className="event-slide  flex flex-col items-center bg-main p-4 text-white rounded-lg">

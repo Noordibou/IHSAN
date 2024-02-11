@@ -25,12 +25,10 @@ export default function Events() {
         },
       ];
   return (
-    <div className='my-8'>
-      <Blob />
-      <div className='z-40'>
+    <div className='w-screen'>
+      {/* <Blob /> */}
       <h1 className="text-4xl font-semibold text-center my-8">Upcoming club events</h1>
       <EventCarousel events={event}  />
-    </div>
     </div>
   )
 }

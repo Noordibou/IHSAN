@@ -1,9 +1,10 @@
 import React from "react";
 import Image from "next/image";
+import Blob from "@/components/opportunities/Blob";
 
 export default function Mission() {
   return (
-    <div>
+    <div className="">
       <h1 className="text-4xl font-semibold text-center p-4">Who We Are</h1>
       <div className="flex flex-col items-center md:flex-row gap-4 p-4 mb-10">
         <div className="md:w-1/2 p-4">
@@ -17,7 +18,7 @@ export default function Mission() {
         <div className="md:w-1/2 ">
           <Image
             src="/image-holder2.webp"
-            className="md:w-full w-96 md:h-64 h-56 object-cover"
+            className="md:w-full w-96 md:h-64 h-56 object-cover px-6"
             width={600}
             height={600}
             alt="Home Background Image"
