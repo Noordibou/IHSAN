@@ -8,18 +8,14 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        bodyFont: ['Roboto Mono',' monospace'],
-        titleFont: ['Poppins', 'sans-serif'],
-      },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        bodyFont: ['Arimo',' sans-serif'],
+        titleFont: ['Libre Baskerville', 'serif'],
       },
       colors: {
         "main": "#001534",
         "secondary": "#96b3de",
-        "bodyColor": "#f3f2ee",
+        "bodyColor": "#f7f4e9",
+        "third": "#C6AA80",
       },
     },
   },

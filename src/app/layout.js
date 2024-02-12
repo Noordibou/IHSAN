@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
         <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Mono&display=swap" rel="stylesheet" />
       </head>
       {/* <link rel="icon" href="/logo1.png" sizes="32X32" /> */}
-      <body className="bg-white text-black" >
+      <body className=" text-black bg-white" >
         <Navbar />
         {children }
         <Footer />
