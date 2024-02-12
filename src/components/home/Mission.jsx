@@ -5,7 +5,7 @@ import Blob from "@/components/opportunities/Blob";
 export default function Mission() {
   return (
     <div className="">
-      // <h1 className="text-4xl font-semibold text-center md:pt-6 pt-4 font-titleFont">Who We Are</h1>
+      {/* <h1 className="text-4xl font-semibold text-center md:pt-6 pt-4 font-titleFont">Who We Are</h1> */}
       <div className="flex flex-col items-center md:flex-row gap-4 p-4 mb-10 ">
         <div className="md:w-1/2 p-4 ">
           <h1 className="md:text-3xl text-2xl pb-4 font-semibold font-titleFont">About Us</h1>
