@@ -9,12 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         bodyFont: ['Roboto Mono',' monospace'],
-        titleFont: ['Poppins', 'sans-serif'],
-      },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        titleFont: ['Libre Baskerville', 'serif'],
       },
       colors: {
         "main": "#001534",
