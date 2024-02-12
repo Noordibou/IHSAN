@@ -8,13 +8,13 @@ function HomeBackgroundImage() {
 
             <Image
                 src="/group.jpg"
-                className="w-screen h-96 object-cover"
+                className="w-screen md:h-96 md:object-cover h-auto"
                 width={1000}
                 height={1000}
                 alt="Home Background Image"
                 aria-label='Home Background Image'
             />
-            <div className='absolute top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white px-8 text-container shadow-md bg-main bg-opacity-40 rounded'>
+            <div className='absolute w-[65%] md:w-auto top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white px-8 text-container shadow-md bg-main bg-opacity-40 rounded'>
         <h1 className='text-2xl md:text-4xl font-semibold mb-2 font-titleFont '>
             Welcome to IHA
         </h1>
