@@ -10,7 +10,7 @@ const MissionPage = () => {
       <div className="flex flex-col items-center md:flex-row gap-4 p-4">
         <div className="md:w-1/2 flex  justify-center">
           <Image
-            src="/image-holder1.png"
+            src="/student2.webp"
             alt="Mission Image"
             width={800}
             height={400}

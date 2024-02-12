@@ -22,7 +22,7 @@ const Footer = () => {
   ];
 
   const footerLinks1 = [
-    { text: "About Us", link: "/about-us" },
+    { text: "About Us", link: "/mission" },
     { text: "Become a Member", link: "/become-a-member"},
     { text: "Contact Us", link: "/contact-us" },
   ];

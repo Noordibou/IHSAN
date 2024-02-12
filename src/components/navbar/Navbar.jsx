@@ -102,6 +102,12 @@ const navs = [
 ];
 
 const NavigationMobile = ({ navs, isOpen, toggleNavigation }) => {
+
+  const handleLinkClick = () => {
+    // Close navigation when a link is clicked
+    toggleNavigation();
+  };
+
   return (
     <>
       {navs.map(({ title, subheaders }, index) => (
@@ -114,7 +120,7 @@ const NavigationMobile = ({ navs, isOpen, toggleNavigation }) => {
                   <p>{subheader}</p>
                 ) : subheader.link ? (
                   <Link href={subheader.link}>
-                    <p>{subheader.title}</p>
+                    <p onClick={handleLinkClick}>{subheader.title}</p>
                   </Link>
                 ) : (
                   <span>{subheader.title}</span>
@@ -127,7 +133,9 @@ const NavigationMobile = ({ navs, isOpen, toggleNavigation }) => {
       <li>
         <Link href="/membership">
           <p
-            onClick={toggleNavigation}
+            onClick={() => {
+              handleLinkClick();
+            }}
             className=" mt-3 btn  bg-main text-white border-secondary border-2 rounded-2xl hover:bg-secondary hover:text-white hover:border-secondary"
           >
             Join IHSAN
@@ -140,6 +148,43 @@ const NavigationMobile = ({ navs, isOpen, toggleNavigation }) => {
 
 
 const NavigationDesktop = ({ navs }) => {
+  const [dropdownOpen, setDropdownOpen] = useState(null);
+
+  const handleDropdownOpen = (index) => {
+    setDropdownOpen(index);
+  };
+
+  const handleDropdownClose = () => {
+    // Delay the closing of the dropdown by 5 seconds
+    setTimeout(() => {
+      setDropdownOpen(null);
+    }, 5000);
+  };
+
+  const handleDropdownEnter = () => {
+    // Clear the timeout to prevent automatic closing when interacting with the dropdown
+    clearTimeout();
+  };
+
+  const handleDropdownLeave = () => {
+    // Delay the closing of the dropdown by 5 seconds after leaving the dropdown area
+    setTimeout(() => {
+      setDropdownOpen(null);
+    }, 5000);
+  };
+
+  useEffect(() => {
+    const handleWindowClick = () => {
+      setDropdownOpen(null);
+    };
+
+    window.addEventListener('click', handleWindowClick);
+
+    return () => {
+      window.removeEventListener('click', handleWindowClick);
+    };
+  }, []);
+
   return (
     <>
       {navs.map(({ title, subheaders }, index) => (
@@ -148,14 +193,22 @@ const NavigationDesktop = ({ navs }) => {
           className="text-xl"
           aria-label={`${title} dropdown button`}
         >
-          <details>
+          <details
+            open={dropdownOpen === index}
+            onMouseEnter={() => handleDropdownOpen(index)}
+            onMouseLeave={handleDropdownClose}
+            onClick={handleDropdownEnter}
+            onBlur={handleDropdownLeave}
+          >
             <summary className="hover:underline underline-offset-4 transition decoration-core-red text-black">
               {title}
             </summary>
-            <ul className="p-2 rounded-none bg-white z-10">
+            <ul className="p-2 rounded-none bg-white z-10" 
+                // Apply CSS transition for the fade effect
+                style={{ transition: 'opacity 1s ease-in-out', opacity: dropdownOpen === index ? 1 : 0 }}>
               {subheaders.map((subheader, subIndex) => (
                 <li key={subIndex}>
-                  {typeof subheader === "string" ? (
+                  {typeof subheader === 'string' ? (
                     <p className="text-md hover:underline underline-offset-4 transition decoration-core-red text-black">
                       {subheader}
                     </p>
@@ -166,9 +219,7 @@ const NavigationDesktop = ({ navs }) => {
                       </p>
                     </Link>
                   ) : (
-                    <span className="text-md text-black">
-                      {subheader.title}
-                    </span>
+                    <span className="text-md text-black">{subheader.title}</span>
                   )}
                 </li>
               ))}
