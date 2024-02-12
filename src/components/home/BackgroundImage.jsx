@@ -40,7 +40,7 @@ function HomeBackgroundImage() {
       <div>
         <Image
           src={isLargeScreen ? "/group6.svg" : "/group7.svg"}
-          className="w-screen md:h-96 md:object-cover h-auto"
+          className="w-screen md:object-cover h-auto"
           width={1000}
           height={1000}
           quality={isLargeScreen ? 90 : 80} // Adjust quality based on screen size
