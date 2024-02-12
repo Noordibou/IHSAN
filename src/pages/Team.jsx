@@ -5,13 +5,32 @@ import Image from 'next/image';
 
 const teamMembers = [
   {
+    name: 'Omar Dibou',
+    role: 'President',
+    major: 'Biology',
+    track:'Pre-Med',
+    graduation: '2023',
+    discription: "I am most excited about meeting the new members of IHA and the Ramadan Social event. Outside of School, I am an Undergraduate Research Assistant for Interventional Cardiology at Medical City Fort Worth.I am a certified EMT and also volunteer at UTSW. In my free time, I enjoy wrestling with friends, hanging out with family, and try out new Middle Eastern cafe spots. Fun fact I have 7 siblings.",
+    image: '/omar.jpg',
+
+  },
+  {
     name: 'Rahil Howlader',
     role: 'Vice President',
     major: 'Neuroscience',
     track:'Pre-Med',
     graduation: '',
-    discription: "Being able to give like minded students clinical experiences. Working as a Certified Clinical Medical Assistant, Ungergraduate Reasearch Assistant for Interventional Cardiology at Medical City Fort Worth, Teaching Assistant for Introduction to Neuroscience with Dr. Raboune, Medical Director for Noorishment, Member of Aplha Epsilon Delta, Volunteer at Children’s Hospital Dallas",
+    discription: "Being able to give like minded students clinical experiences. Working as a Certified Clinical Medical Assistant, Ungergraduate Reasearch Assistant for Interventional Cardiology at Medical City Fort Worth, Teaching Assistant for Introduction to Neuroscience with Dr. Raboune, Medical Director for Noorishment, Volunteer at Children’s Hospital Dallas. Fun fact about me is that I have a twin brother!",
     image: '/rahil.jpg',
+  },
+  {
+  name: 'Ayah Hamdan',
+  role: ' Secretary',
+  major: 'Healthcare Studies with a minor in Biology',
+  track:'Pre-Dental Track',
+  graduation: 'Fall 2025',
+  discription: "I look forward to serving on the board this year, welcoming new members to IHA, and contributing to create a supportive environment for pre-health students. Outside of college, I work as a registered dental assistant (RDA) in a general practice and volunteer at a dental clinic that offers free services for low-income residents. In my free time, I like to draw/paint, hang out with friends and family, and try out new cuisines. ",
+  image: '/ayah.jpg',
   },
   {
     name: 'Faatin Faisal',
@@ -22,15 +41,6 @@ const teamMembers = [
     discription: "Faatin is a sophomore biology major with a minor in Child Development, on the pre-dental track with a planned graduation in 2026. She currently holds the position of Registered Dental Assistant (RDA) at a pediatric dental office. Finding immense fulfillment in working with children, Faatin enjoys witnessing their increasing comfort with dental procedures over time. She expresses excitement about the plethora of opportunities presented by the organization and looks forward to delving deeper into them. In her free time, she loves to hang out with her friends and family!",
     image: '/faatin.jpg',
   },
-    {
-    name: 'Ayah Hamdan',
-    role: ' Secretary',
-    major: 'Healthcare Studies with a minor in Biology',
-    track:'Pre-Dental Track',
-    graduation: 'Fall 2025',
-    discription: "I look forward to serving on the board this year, welcoming new members to IHA, and contributing to create a supportive environment for pre-health students. Outside of college, I work as a registered dental assistant (RDA) in a general practice and volunteer at a dental clinic that offers free services for low-income residents. In my free time, I like to draw/paint, hang out with friends and family, and try out new cuisines. ",
-    image: '/ayah.jpg',
-    },
     {
     name: 'Hiba Riazuddin',
     role: 'Social Events Coordinator',

@@ -19,7 +19,7 @@ const MissionPage = () => {
         </div>
         <div className="md:w-1/2">
           <p className="text-lg">
-            At our core, our mission is to empower individuals and businesses through innovative solutions. We believe in pushing the boundaries of technology to create meaningful and impactful experiences. Our dedicated team works collaboratively to deliver cutting-edge solutions that exceed expectations. With a commitment to excellence, integrity, and continuous improvement, we strive to make a positive difference in the digital landscape.
+          The mission of Ihsan for Healthcare is to empower and support students pursuing careers in healthcare by connecting them with enriching opportunities that will enhance their skills and strengthen their applications. We aim to nurture well-rounded, compassionate future healthcare professionals while also raising awareness and providing aid to underserved health systems globally. Our ultimate vision is a world where all communities have access to quality, affordable healthcare and where providers work collaboratively across borders to exchange knowledge and improve outcomes.
           </p>
         </div>
       </div>
