@@ -131,7 +131,7 @@ const NavigationMobile = ({ navs, isOpen, toggleNavigation }) => {
         </li>
       ))}
       <li>
-        <Link href="/membership">
+        <Link href="https://docs.google.com/forms/d/e/1FAIpQLSdB_jx8xHgkWbdwI5bhUUMrieFcu7a7PobW5ngwx44cYqHT0w/viewform" target="_blank">
           <p
             onClick={() => {
               handleLinkClick();
@@ -258,7 +258,7 @@ function Navbar() {
         </ul>
       </div>
       <div>
-        <Link href="/membership">
+        <Link href="https://docs.google.com/forms/d/e/1FAIpQLSdB_jx8xHgkWbdwI5bhUUMrieFcu7a7PobW5ngwx44cYqHT0w/viewform" target="_blank">
           <div
             className="btn ml-5 mr-3 hidden md:flex bg-main text-white border-secondary border-2 rounded-2xl hover:bg-secondary hover:text-white hover:border-secondary "
           >
