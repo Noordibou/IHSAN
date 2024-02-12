@@ -1,6 +1,6 @@
 import React from 'react'
 import EventCarousel from '@/components/opportunities/EventCarousel'
-
+import Blob from '@/components/opportunities/Blob'
 export default function Events() {
     const event = [
         {
@@ -25,8 +25,9 @@ export default function Events() {
         },
       ];
   return (
-    <div className='my-8 '>
-      <h1 className="text-4xl font-semibold text-center my-8 ">Upcoming club events</h1>
+    <div className='w-screen'>
+      {/* <Blob /> */}
+      <h1 className="text-4xl font-semibold text-center my-8">Upcoming club events</h1>
       <EventCarousel events={event}  />
     </div>
   )

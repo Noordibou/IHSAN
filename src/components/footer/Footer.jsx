@@ -22,15 +22,14 @@ const Footer = () => {
   ];
 
   const footerLinks1 = [
-    { text: "About Us", link: "/about-us" },
-    { text: "Become a Member", link: "/become-a-member"},
-    { text: "Contact Us", link: "/contact-us" },
+    { text: "About Us", link: "/mission" },
+    { text: "Become a Member", link: "https://docs.google.com/forms/d/e/1FAIpQLSdB_jx8xHgkWbdwI5bhUUMrieFcu7a7PobW5ngwx44cYqHT0w/viewform"},
+    { text: "Contact Us", link: "mailto:ihsanhealthcareutd@gmail.com" },
   ];
 
   const footerLinks2 = [
     { text: "Services", link: "/services" },
     { text: "News & Events", link: "/news-and-events" },
-    { text: "Get Involved", link: "/get-involved" },
   ];
 
   const renderSocialLinks = () => {
@@ -49,14 +48,14 @@ const Footer = () => {
 
   const renderFooterLinks = (links) => {
     return links.map(({ text, link }, index) => (
-      <Link key={index} href={link} className="link link-hover">
+      <Link key={index} href={link} target="_blank" className="link link-hover">
         {text}
       </Link>
     ));
   };
 
   return (
-    <footer className="px-6 pt-4 pb-3  text-[#FEFAFA] bg-core-red bottom-[0] relative">
+    <footer className="px-6 pt-4 pb-3 text-[#FEFAFA] bottom-[0] relative bg-main">
       <div className="container mx-auto ">
         <div className="grid grid-cols-3 gap-10 text-xs">
           <div className="flex flex-col my-2">
@@ -66,7 +65,7 @@ const Footer = () => {
                 width={80}
                 height={11}
                 alt="logo"
-                className="cursor-pointer ml-3"
+                className="cursor-pointer ml-3 rounded-xl"
               />
             </Link>
           </div>

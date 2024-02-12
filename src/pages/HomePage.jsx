@@ -9,6 +9,7 @@ export default function HomePage() {
     <div className=" flex flex-col items-center">
       
         <HomeBackgroundImage />
+        
         <Mission />
         <Events />
         <ContactMe />

@@ -1,6 +1,6 @@
 const Button = () => {
     return (
-      <button className="h-10 rounded-2xl bg-blue-300 font-bold px-3">Join IHSAN</button>
+      <button className="h-10 rounded-2xl bg-main font-bold px-3">Join IHSAN</button>
     );
   };
   

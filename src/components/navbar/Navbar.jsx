@@ -102,6 +102,12 @@ const navs = [
 ];
 
 const NavigationMobile = ({ navs, isOpen, toggleNavigation }) => {
+
+  const handleLinkClick = () => {
+    // Close navigation when a link is clicked
+    toggleNavigation();
+  };
+
   return (
     <>
       {navs.map(({ title, subheaders }, index) => (
@@ -114,7 +120,7 @@ const NavigationMobile = ({ navs, isOpen, toggleNavigation }) => {
                   <p>{subheader}</p>
                 ) : subheader.link ? (
                   <Link href={subheader.link}>
-                    <p>{subheader.title}</p>
+                    <p onClick={handleLinkClick}>{subheader.title}</p>
                   </Link>
                 ) : (
                   <span>{subheader.title}</span>
@@ -125,10 +131,12 @@ const NavigationMobile = ({ navs, isOpen, toggleNavigation }) => {
         </li>
       ))}
       <li>
-        <Link href="/membership">
+        <Link href="https://docs.google.com/forms/d/e/1FAIpQLSdB_jx8xHgkWbdwI5bhUUMrieFcu7a7PobW5ngwx44cYqHT0w/viewform" target="_blank">
           <p
-            onClick={toggleNavigation}
-            className=" mt-3 btn  border-core-red bg-white border-2 rounded-2xl hover:bg-core-red hover:text-white hover:border-core-red text-black"
+            onClick={() => {
+              handleLinkClick();
+            }}
+            className=" mt-3 btn  bg-main text-white border-secondary border-2 rounded-2xl hover:bg-secondary hover:text-white hover:border-secondary"
           >
             Join IHSAN
           </p>
@@ -140,6 +148,43 @@ const NavigationMobile = ({ navs, isOpen, toggleNavigation }) => {
 
 
 const NavigationDesktop = ({ navs }) => {
+  const [dropdownOpen, setDropdownOpen] = useState(null);
+
+  const handleDropdownOpen = (index) => {
+    setDropdownOpen(index);
+  };
+
+  const handleDropdownClose = () => {
+    // Delay the closing of the dropdown by 5 seconds
+    setTimeout(() => {
+      setDropdownOpen(null);
+    }, 5000);
+  };
+
+  const handleDropdownEnter = () => {
+    // Clear the timeout to prevent automatic closing when interacting with the dropdown
+    clearTimeout();
+  };
+
+  const handleDropdownLeave = () => {
+    // Delay the closing of the dropdown by 5 seconds after leaving the dropdown area
+    setTimeout(() => {
+      setDropdownOpen(null);
+    }, 5000);
+  };
+
+  useEffect(() => {
+    const handleWindowClick = () => {
+      setDropdownOpen(null);
+    };
+
+    window.addEventListener('click', handleWindowClick);
+
+    return () => {
+      window.removeEventListener('click', handleWindowClick);
+    };
+  }, []);
+
   return (
     <>
       {navs.map(({ title, subheaders }, index) => (
@@ -148,14 +193,22 @@ const NavigationDesktop = ({ navs }) => {
           className="text-xl"
           aria-label={`${title} dropdown button`}
         >
-          <details>
+          <details
+            open={dropdownOpen === index}
+            onMouseEnter={() => handleDropdownOpen(index)}
+            onMouseLeave={handleDropdownClose}
+            onClick={handleDropdownEnter}
+            onBlur={handleDropdownLeave}
+          >
             <summary className="hover:underline underline-offset-4 transition decoration-core-red text-black">
               {title}
             </summary>
-            <ul className="p-2 rounded-none bg-white z-10">
+            <ul className="p-2 rounded-none bg-white z-10" 
+                // Apply CSS transition for the fade effect
+                style={{ transition: 'opacity 1s ease-in-out', opacity: dropdownOpen === index ? 1 : 0 }}>
               {subheaders.map((subheader, subIndex) => (
                 <li key={subIndex}>
-                  {typeof subheader === "string" ? (
+                  {typeof subheader === 'string' ? (
                     <p className="text-md hover:underline underline-offset-4 transition decoration-core-red text-black">
                       {subheader}
                     </p>
@@ -166,9 +219,7 @@ const NavigationDesktop = ({ navs }) => {
                       </p>
                     </Link>
                   ) : (
-                    <span className="text-md text-black">
-                      {subheader.title}
-                    </span>
+                    <span className="text-md text-black">{subheader.title}</span>
                   )}
                 </li>
               ))}
@@ -188,15 +239,15 @@ function Navbar() {
     setMobileNavOpen(!isMobileNavOpen);
   };
   return (
-    <div className="navbar justify-between p-0 bg-white z-50 font-mont">
+    <div className="navbar justify-between p-0 bg-white z-50 font-mont shadow">
       <Link href="/">
         <Image
-          src="/logo.jpg"
-          width={48}
-          height={20}
-          alt="Bottomless Logo"
+          src="/logo1.png"
+          width={120}
+          height={70}
+          alt="IHSAN logo"
           aria-label="Logo and link to go to homepage"
-          className="mx-3"
+          className="mx-3 w-20"
         ></Image>
       </Link>
       {/* <div className="navbar-start"> */}
@@ -207,10 +258,9 @@ function Navbar() {
         </ul>
       </div>
       <div>
-        <Link href="/membership">
+        <Link href="https://docs.google.com/forms/d/e/1FAIpQLSdB_jx8xHgkWbdwI5bhUUMrieFcu7a7PobW5ngwx44cYqHT0w/viewform" target="_blank">
           <div
-            className="btn ml-5 mr-3 hidden md:flex bg-white border-core-red border-2 rounded-2xl hover:bg-core-red hover:text-white hover:border-core-red text-black"
-            aria-label="navigate to career help page"
+            className="btn ml-5 mr-3 hidden md:flex bg-main text-white border-secondary border-2 rounded-2xl hover:bg-secondary hover:text-white hover:border-secondary "
           >
             Join IHSAN
           </div>
