@@ -136,7 +136,7 @@ const NavigationMobile = ({ navs, isOpen, toggleNavigation }) => {
             onClick={() => {
               handleLinkClick();
             }}
-            className=" mt-3 btn  bg-main text-white border-secondary border-2 rounded-2xl hover:bg-secondary hover:text-white hover:border-secondary"
+            className=" mt-3 btn  bg-main text-white border-third border-2 rounded-2xl hover:bg-third hover:text-white hover:border-third"
           >
             Join IHSAN
           </p>
@@ -260,7 +260,7 @@ function Navbar() {
       <div>
         <Link href="https://docs.google.com/forms/d/e/1FAIpQLSdB_jx8xHgkWbdwI5bhUUMrieFcu7a7PobW5ngwx44cYqHT0w/viewform" target="_blank">
           <div
-            className="btn ml-5 mr-3 hidden md:flex bg-main text-white border-secondary border-2 rounded-2xl hover:bg-secondary hover:text-white hover:border-secondary "
+            className="btn ml-5 mr-3 hidden md:flex bg-main text-white border-third border-2 rounded-2xl hover:bg-third hover:text-white hover:border-third "
           >
             Join IHSAN
           </div>

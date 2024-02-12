@@ -27,7 +27,7 @@ export default function Events() {
   return (
     <div className='w-screen'>
       {/* <Blob /> */}
-      <h1 className="text-4xl font-semibold text-center my-8">Upcoming club events</h1>
+      <h1 className="text-4xl font-semibold text-center font-titleFont my-8">Upcoming club events</h1>
       <EventCarousel events={event}  />
     </div>
   )

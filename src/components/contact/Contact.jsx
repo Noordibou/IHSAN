@@ -13,7 +13,7 @@ const ContactMe = () => {
   return (
     <div className="flex flex-col items-center mx-4 my-14">
       
-        <p className="text-center">
+        <p className="text-center font-titleFont font-semibold text-xl">
           If you have any questions or would like to get in touch, please send
           us an email
         </p>
@@ -21,7 +21,7 @@ const ContactMe = () => {
       <div className=" mt-6">
         <button
           onClick={handleEmailButtonClick}
-          className="hover:bg-secondary py-2 px-2 rounded-2xl text-white bg-main font-bold text-lg "
+          className="hover:bg-third/80 py-2 px-2 rounded-2xl  bg-third font-bold text-lg "
         >
           Contact Us
         </button>
