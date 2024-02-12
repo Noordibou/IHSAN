@@ -49,11 +49,11 @@ function HomeBackgroundImage() {
         />
       </div>
        <div className='absolute w-[65%] md:w-auto top-2/3 left-1/3 transform -translate-x-1/2 -translate-y-1/2 text-start  text-white px-8 text-container   rounded'>
-         <h1 className='md:text-[55px] text-4xl font-semibold mb-2 font-titleFont text-[#EEEAD6]'>
+         <h1 className='md:text-[55px] text-2xl font-semibold mb-2 font-titleFont text-[#EEEAD6]'>
              Welcome to IHA
          </h1>
         
-         <p className='md:text-[20px] text-lg mb-4 text-[#CDAD7D] font-titleFont'>
+         <p className='md:text-[20px] text-base mb-4 text-[#CDAD7D] font-titleFont'>
          Ihsan Healthcare Association at University of Texas at Dallas
          </p>
       </div>
