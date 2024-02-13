@@ -36,14 +36,14 @@ function HomeBackgroundImage() {
   const isLargeScreen = useMediaQuery({ minWidth: 768 });
 
   return (
-    <div className="relative">
-      <div>
+    <div className="relative md:h-auto bg-main ">
+      <div className='w-screen grid place-content-center'>
         <Image
           src={isLargeScreen ? "/group6.svg" : "/group7.svg"}
-          className="w-screen md:object-cover h-auto"
+          className="md:w-screen md:object-cover md:h-auto h-[550px] object-cover"
           width={1000}
           height={1000}
-          quality={isLargeScreen ? 90 : 80} // Adjust quality based on screen size
+          quality={isLargeScreen ? 90 : 90} // Adjust quality based on screen size
           alt="Home Background Image"
           aria-label='Home Background Image'
         />
