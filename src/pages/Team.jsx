@@ -101,7 +101,7 @@ const TeamPage = () => {
               className="rounded-full h-64 w-64 md:h-80 md:w-80 object-cover border-dashed border-4 border-third items-center"
             />
           </div>
-          <div className="md:w-1/2 md:px-6 text-center md:text-start bg-third/50 py-2 px-2 rounded-xl font-bodyFont">
+          <div className="md:w-1/2 md:px-6 text-center md:text-start bg-third/30 py-2 px-2 rounded-xl font-bodyFont">
             <h2 className="text-2xl font-titleFont font-semibold">{member.name}</h2>
             <p className="text-gray-600 font-medium ">{member.role}</p>
             <p className="text-gray-600 font-medium ">{member.major} ({member.track})</p>
