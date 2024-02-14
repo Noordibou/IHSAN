@@ -82,7 +82,7 @@ function HomeBackgroundImage() {
       ) : (
         <div>
         <div className='grid place-content-center my-8 '>
-        <h1 className='text-center md:text-[55px] text-2xl font-semibold mb-2 font-sur uppercase tracking-[8px] text-secondary '>
+        <h1 className='text-center md:text-[55px] text-3xl font-semibold mb-2 font-sur uppercase tracking-[8px] text-secondary '>
           Welcome to IHA
         </h1>
       </div>
