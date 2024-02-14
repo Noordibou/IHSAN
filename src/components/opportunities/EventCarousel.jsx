@@ -40,7 +40,7 @@ const EventCarousel = ({ events }) => {
           },
         },
       }}
-      className=" mx-10 pb-12 p-8 w-[95%] md:w-auto bg-third bg-opacity-40 rounded-xl shadow-md "
+      className=" mx-4 md:mx-10 pb:6 md:pb-12 p-4 md:p-8 w-[95%] md:w-auto bg-third bg-opacity-40 rounded-xl shadow-md "
     >
       
       {events.map((event, index) => (
