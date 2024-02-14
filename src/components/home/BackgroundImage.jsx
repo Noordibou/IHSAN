@@ -28,65 +28,90 @@
 
 // export default HomeBackgroundImage;
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { useMediaQuery } from 'react-responsive';
+import Button from '../navbar/Button';
+import Link from 'next/link';
 
 function HomeBackgroundImage() {
-  const isLargeScreen = useMediaQuery({ minWidth: 640 });
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsLargeScreen(window.innerWidth >= 768);
+    };
+
+    checkScreenSize();
+
+    window.addEventListener('resize', checkScreenSize);
+
+    return () => {
+      window.removeEventListener('resize', checkScreenSize);
+    };
+  }, []);
 
   return (
     <div className={`relative md:h-auto bg-main ${isLargeScreen ? 'md:flex' : 'md:flex-col'}`}>
+      <div className='w-screen grid place-content-center'>
+        {isLargeScreen ? (
+          <Image
+            src="/group1.svg"
+            className="md:w-screen md:object-cover md:h-auto max-h-[550px] object-cover mix-blend-screen filter brightness-110 contrast-120 "
+            width={1000}
+            height={1000}
+            quality={90}
+            priority={true}
+            alt="Home Background Image"
+            aria-label='Home Background Image'
+          />
+        ) : (
+          <div dangerouslySetInnerHTML={{ __html: '<h1>Your content for smaller screens</h1>' }} />
+        )}
+      </div>
       {isLargeScreen ? (
-        <>
-          <div className='w-screen grid place-content-center'>
-            <Image
-              src="/group7.svg"
-              className="md:w-screen md:object-cover md:h-auto h-[550px] object-cover"
-              width={1000}
-              height={1000}
-              quality={90}
-              alt="Home Background Image"
-              aria-label='Home Background Image'
-            />
-          </div>
-          <div className='absolute w-[65%] md:w-auto top-2/3 left-1/3 transform -translate-x-1/2 -translate-y-1/2 text-start  text-white px-8 text-container   rounded'>
-            <h1 className='md:text-[55px] text-2xl font-semibold mb-2 font-titleFont text-[#EEEAD6]'>
-              Welcome to IHA
-            </h1>
-            <p className='md:text-[20px] text-base mb-4 text-[#CDAD7D] font-titleFont'>
-              Ihsan Healthcare Association at University of Texas at Dallas
-            </p>
-          </div>
-        </>
+        <div className='absolute w-[65%]  md:w-auto top-2/3 left-1/3 transform -translate-x-1/2 md:-translate-y-1/2 text-start lg:-translate-y-1/3 text-white pl-8  rounded'>
+          <h1 className='md:text-[55px] text-2xl font-bold   font-titleFont text-bodyColor uppercase leading-[1] '>
+            Welcome to IHA
+          </h1>
+          <p className='md:text-[20px] text-base mb-2  text-secondary font-titleFont pl-4 '>
+            Ihsan Healthcare Association at the University of Texas at Dallas
+          </p>
+          <Button />
+          
+        </div>
       ) : (
-        <>
-          <div className='grid place-content-center my-8'>
-            <h1 className='md:text-[55px] text-4xl font-semibold mb-2 font-titleFont text-[#EEEAD6]'>
-              Welcome to IHA
-            </h1>
-          </div>
-          <div className='w-screen grid place-content-center'>
-            <Image
-              src="/group6.svg"
-              className="md:w-screen md:object-cover md:h-auto  object-contain"
-              width={1000}
-              height={1000}
-              quality={90}
-              alt="Home Background Image"
-              aria-label='Home Background Image'
-            />
-          </div>
-          <div className='grid place-content-center my-8 mx-5'>
-            <p className='md:text-[20px] text-xl mb-4 text-[#CDAD7D] font-titleFont text-center'>
-              Ihsan Healthcare Association at University of Texas at Dallas
-            </p>
-          </div>
-        </>
+        <div>
+        <div className='grid place-content-center my-8 '>
+        <h1 className='md:text-[55px] text-4xl font-semibold mb-2 font-sur uppercase tracking-[10px] text-secondary'>
+          Welcome to IHA
+        </h1>
+      </div>
+      <div className='w-screen grid place-content-center'>
+        <Image
+          src="/group2.svg"
+          className="object-contain mix-blend-screen filter brightness-110 contrast-80"
+          width={1000}
+          height={1000}
+          quality={90}
+          priority={true}
+          alt="Home Background Image"
+          aria-label='Home Background Image'
+        />
+      </div>
+      <div className='grid place-content-center my-8 mx-5'>
+        <p className='md:text-[20px] text-xl mb-4 text-third font-titleFont text-center'>
+          Ihsan Healthcare Association at University of Texas at Dallas
+        </p>
+       <Button />
+      </div>
+      </div>
       )}
     </div>
   );
 }
 
+    
 export default HomeBackgroundImage;
+
+
 
