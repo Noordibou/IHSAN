@@ -10,12 +10,14 @@ module.exports = {
       fontFamily: {
         bodyFont: ['Arimo',' sans-serif'],
         titleFont: ['Libre Baskerville', 'serif'],
+        cri: ['Crimson Pro', 'serif'],
+        sur: ['Suranna', 'serif'],
       },
       colors: {
-        "main": "#001534",
-        "secondary": "#96b3de",
-        "bodyColor": "#f7f4e9",
-        "third": "#C6AA80",
+        "main": "#0d1321",
+        "secondary": "#f9f7f3",
+        "third": "#98b9d2",
+        "bodyColor": "#f9f7f3",
       },
     },
   },
