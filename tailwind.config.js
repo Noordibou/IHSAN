@@ -17,6 +17,7 @@ module.exports = {
         "main": "#0d1321",
         "secondary": "#f9f7f3",
         "third": "#98b9d2",
+        // "third": "#aec3b0",
         "bodyColor": "#f9f7f3",
       },
     },

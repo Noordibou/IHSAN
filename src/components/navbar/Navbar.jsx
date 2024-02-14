@@ -74,7 +74,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 const navs = [
   {
@@ -88,17 +88,45 @@ const navs = [
         title: "Our Mission",
         link: "/mission", // Add the link here
       },
-      "Contact Info",
+      {
+        title: "Contact Us",
+        link: "mailto:ihsanhealthcareutd@gmail.com", // Add the link here
+      }
     ],
   },
   {
-    title: "Our Impact",
-    subheaders: ["Success Stories"],
+    title: "Services",
+    subheaders: [
+      {
+        title: "Social Events",
+        link: "/social", // Add the link here
+      },
+      {
+        title: "Workshops",
+        link: "/workshops", // Add the link here
+      },
+      {
+        title: "Volunteering",
+        link: "/volunteering", // Add the link here
+      },
+
+    ],
   },
+  
   {
-    title: "Get Involved",
-    subheaders: ["Donate", "Volunteer"],
+    title: "More",
+    subheaders: [
+      {
+        title: "Resources",
+        link: "/resources", // Add the link here
+      },
+      {
+        title: "Donate",
+        link: "", // Add the link here
+      },
+    ],
   },
+ 
 ];
 
 const NavigationMobile = ({ navs, isOpen, toggleNavigation }) => {
@@ -110,8 +138,9 @@ const NavigationMobile = ({ navs, isOpen, toggleNavigation }) => {
 
   return (
     <>
+    <div className="bg-bodyColor rounded-2xl -m-2">
       {navs.map(({ title, subheaders }, index) => (
-        <li key={index} className="">
+        <li key={index} className="py-2" >
           <p className="text-black ">{title}</p>
           <ul className={`p-2 text-black ${isOpen ? "block" : "hidden"}`}>
             {subheaders.map((subheader, subIndex) => (
@@ -136,12 +165,13 @@ const NavigationMobile = ({ navs, isOpen, toggleNavigation }) => {
             onClick={() => {
               handleLinkClick();
             }}
-            className=" mt-3 btn  bg-main text-white border-third border-2 rounded-2xl hover:bg-third hover:text-white hover:border-third"
+            className=" my-2 btn  bg-main text-white border-third border-2 rounded-2xl hover:bg-third hover:text-white hover:border-third"
           >
             Join IHSAN
           </p>
         </Link>
       </li>
+      </div>
     </>
   );
 };
@@ -239,7 +269,7 @@ function Navbar() {
     setMobileNavOpen(!isMobileNavOpen);
   };
   return (
-    <div className="navbar justify-between p-0 bg-white z-50 font-mont shadow">
+    <div className="navbar justify-between p-0 bg-bodyColor z-50 font-mont shadow">
       <Link href="/">
         <Image
           src="/logo1.png"
