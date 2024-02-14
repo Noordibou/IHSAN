@@ -7,10 +7,11 @@ import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 const EventCarousel = ({ events }) => {
 
   if (!events || events.length === 0) {
-    return <p>No upcoming events.</p>;
+    return <p className=' place-content-center grid font-cri text-xl font-semibold bg-third w-screen h-24 bg-opacity-40'>Coming soon</p>;
   }
 
   return (
+    
     <Splide
       options={{
         type     : 'slide',
@@ -39,16 +40,18 @@ const EventCarousel = ({ events }) => {
           },
         },
       }}
-      className=" mx-10 pb-12 pt-8  "
+      className=" mx-10 pb-12 p-8 w-[80%] md:w-auto bg-third bg-opacity-40 rounded-xl shadow-md "
     >
+      
       {events.map((event, index) => (
-        <SplideSlide key={index} className="event-slide  flex flex-col items-center bg-main p-4 text-white rounded-lg font-bodyFont">
-          <img src="/image-holder2.webp" alt="Event Image" className='md:h-64 md:w-80 w-52 h-44 ' />
-          <h3>{event.title}</h3>
-          <p>{event.description}</p>
+        <SplideSlide key={index} className="event-slide flex flex-col items-center  bg-main p-4 text-white rounded-2xl font-bodyFont  md:h-auto ">
+          <img src="/image-holder2.webp" alt="Event Image" className='md:h-64 md:w-80 w-52 h-44 rounded-lg ' />
+          <h3 className='font-titleFont pt-2'>{event.title}</h3>
+          <p className='font-bodyFont text-sm'>{event.description}</p>
         </SplideSlide>
       ))}
     </Splide>
+   
   );
 };
 
