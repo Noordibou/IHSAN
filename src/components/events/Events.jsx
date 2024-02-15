@@ -1,6 +1,5 @@
 import React from 'react'
-import EventCarousel from '@/components/opportunities/EventCarousel'
-import Blob from '@/components/opportunities/Blob'
+import EventCarousel from '@/components/events/EventCarousel'
 export default function Events() {
     const event = [
         {
