@@ -19,6 +19,7 @@ const Footer = () => {
       height: 18,
       alt: "instagram",
     },
+
   ];
 
   const footerLinks1 = [

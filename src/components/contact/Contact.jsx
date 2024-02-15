@@ -13,7 +13,7 @@ const ContactMe = () => {
   return (
     <div className="flex flex-col items-center mx-4 my-14">
       
-        <p className="text-center font-titleFont font-semibold text-xl">
+        <p className="text-center font-title font-semibold text-xl">
           If you have any questions or would like to get in touch, please send
           us an email
         </p>

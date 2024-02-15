@@ -40,14 +40,14 @@ const EventCarousel = ({ events }) => {
           },
         },
       }}
-      className=" mx-4 md:mx-10 pb:6 md:pb-12 p-4 md:p-8 w-[95%] md:w-auto bg-third bg-opacity-40 rounded-xl shadow-md "
+      className=" mx-4 md:mx-10 pb:6 md:pb-12  md:p-8 p-6 w-screen "
     >
       
       {events.map((event, index) => (
-        <SplideSlide key={index} className="event-slide flex flex-col items-center  bg-main p-4 text-white rounded-2xl font-bodyFont  md:h-auto ">
-          <img src="/image-holder2.webp" alt="Event Image" className='md:h-64 md:w-80 w-52 h-44 rounded-lg ' />
-          <h3 className='font-titleFont pt-2'>{event.title}</h3>
-          <p className='font-bodyFont text-sm'>{event.description}</p>
+        <SplideSlide key={index} className="event-slide flex flex-col items-center  bg-main p-6 text-white rounded-2xl font-body  md:h-auto ">
+          <img src="/image-holder2.webp" alt="Event Image" className='md:h-64 md:w-80 w-screen h-64 rounded-lg object-cover ' />
+          <h3 className='font-subTitle pt-2 text-xl md:text-2xl'>{event.title}</h3>
+          <p className='font-body text-base font-light'>{event.description}</p>
         </SplideSlide>
       ))}
     </Splide>

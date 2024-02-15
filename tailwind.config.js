@@ -8,10 +8,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        bodyFont: ['Arimo',' sans-serif'],
-        titleFont: ['Libre Baskerville', 'serif'],
-        cri: ['Crimson Pro', 'serif'],
-        sur: ['Suranna', 'serif'],
+        title: ['Libre Baskerville', 'serif'],
+        subTitle: ['Noto Sans', 'sans-serif'],
+        body: ['Poppins',' sans-serif'],
+        arimo: ['Arimo', 'sans-serif'],
       },
       colors: {
         "main": "#0d1321",
