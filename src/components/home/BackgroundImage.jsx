@@ -14,7 +14,7 @@
 //       aria-label='Home Background Image'
 //     />
 //             {/* <div className='absolute w-[65%] md:w-auto top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white px-8 text-container shadow-md bg-main bg-opacity-40 rounded'>
-//         <h1 className='text-2xl md:text-4xl font-semibold mb-2 font-titleFont '>
+//         <h1 className='text-2xl md:text-4xl font-semibold mb-2 font-title '>
 //             Welcome to IHA
 //         </h1>
         
@@ -56,7 +56,7 @@ function HomeBackgroundImage() {
         {isLargeScreen ? (
           <Image
             src="/group2.svg"
-            className="md:w-screen md:object-cover md:h-auto max-h-[550px] object-cover mix-blend-screen filter brightness-110 contrast-120 object-top"
+            className="md:w-screen md:object-cover md:h-auto max-h-[550px] object-cover mix-blend-screen filter brightness-110 contrast-80 object-top"
             width={1000}
             height={1000}
             quality={90}
@@ -70,10 +70,10 @@ function HomeBackgroundImage() {
       </div>
       {isLargeScreen ? (
         <div className='absolute w-[65%]  md:w-auto top-2/3 left-1/3 transform -translate-x-1/2 md:-translate-y-1/2 text-start lg:-translate-y-1/3 text-white pl-8  rounded'>
-          <h1 className='md:text-[55px] text-2xl font-bold   font-titleFont text-bodyColor uppercase leading-[1]  '>
+          <h1 className='md:text-[52px] lg:text-[68px] font-bold  font-title text-bodyColor uppercase leading-[1] '>
             Welcome to IHA
           </h1>
-          <p className='md:text-[20px] text-base mb-2  text-secondary font-titleFont pl-4 '>
+          <p className='md:text-[26px] lg:[32px] leading-[1] mb-2  text-secondary font-title pl-4 '>
             Ihsan Healthcare Association at the University of Texas at Dallas
           </p>
           <Button />
@@ -82,14 +82,14 @@ function HomeBackgroundImage() {
       ) : (
         <div>
         <div className='grid place-content-center my-8 '>
-        <h1 className='text-center md:text-[55px] text-3xl font-semibold mb-2 font-sur uppercase tracking-[8px] text-secondary '>
+        <h1 className='text-center text-4xl font-semibold mb-2 font-title uppercase tracking-[10px] text-secondary '>
           Welcome to IHA
         </h1>
       </div>
       <div className='w-screen grid place-content-center'>
         <Image
           src="/group2.svg"
-          className="object-contain mix-blend-screen filter brightness-110 contrast-80"
+          className="object-contain mix-blend-screen filter brightness-110 contrast-8"
           width={1000}
           height={1000}
           quality={90}
@@ -99,7 +99,7 @@ function HomeBackgroundImage() {
         />
       </div>
       <div className='grid place-content-center my-8 mx-5'>
-        <p className='md:text-[20px] text-xl mb-4 text-third font-titleFont text-center'>
+        <p className='text-2xl mb-4 text-third font-title text-center'>
           Ihsan Healthcare Association at University of Texas at Dallas
         </p>
        <Button />

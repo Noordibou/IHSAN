@@ -1,15 +1,13 @@
 import React from "react";
 import Image from "next/image";
-import Blob from "@/components/opportunities/Blob";
 
 export default function Mission() {
   return (
     <div className="">
-      {/* <h1 className="text-4xl font-semibold text-center md:pt-6 pt-4 font-titleFont">Who We Are</h1> */}
       <div className="flex flex-col items-center md:flex-row gap-4 p-4 mb-10 ">
         <div className="md:w-1/2 p-4 ">
-          <h1 className="md:text-3xl text-2xl pb-4 font-semibold font-titleFont">About Us</h1>
-          <p className="font-bodyFont ">
+          <h1 className="md:text-4xl text-3xl pb-4 font-semibold font-title">About Us</h1>
+          <p className="font-body text-base">
             lerum, consectetur adipiscing elit. Integer nec odio. Praesent
             libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at
             nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.
@@ -31,8 +29,8 @@ export default function Mission() {
       </div>
       <div className="flex flex-col  items-center md:flex-row p-4 gap-4 bg-third">
         <div className="p-4 ">
-          <h1 className="md:text-3xl text-2xl  pb-4 font-titleFont font-semibold ">Our Mission</h1>
-          <p className="font-bodyFont">
+          <h1 className="md:text-4xl text-3xl pb-4 font-title font-semibold ">Our Mission</h1>
+          <p className="font-body text-base">
             Ihsan for Healthcare was founded to support students aspiring to
             enter the healthcare setting post-graduation. The
             organization&apos;s key objective is to connect students with

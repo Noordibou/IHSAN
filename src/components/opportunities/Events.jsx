@@ -27,7 +27,7 @@ export default function Events() {
   return (
     <div className='w-screen flex flex-col items-center'>
       {/* <Blob /> */}
-      <h1 className="md:text-4xl text-2xl font-semibold text-center font-titleFont mb-8 mt-12">Upcoming club events</h1>
+      <h1 className="md:text-4xl text-3xl font-semibold text-center font-title mb-8 mt-12">Upcoming club events</h1>
       <EventCarousel events={event}  />
     </div>
   )
