@@ -56,7 +56,7 @@ function HomeBackgroundImage() {
         {isLargeScreen ? (
           <Image
             src="/group2.svg"
-            className="md:w-screen md:object-cover md:h-auto max-h-[550px] object-cover mix-blend-screen filter brightness-110 contrast-80 object-top"
+            className="md:w-screen md:object-cover md:h-auto max-h-[550px] object-cover mix-blend-screen object-top saturate-150"
             width={1000}
             height={1000}
             quality={90}
@@ -82,14 +82,14 @@ function HomeBackgroundImage() {
       ) : (
         <div>
         <div className='grid place-content-center my-8 '>
-        <h1 className='text-center text-4xl font-semibold mb-2 font-title uppercase tracking-[10px] text-secondary '>
+        <h1 className='text-center text-[34px] font-semibold mb-2 font-title uppercase tracking-[10px] text-secondary bg-clip-text text-transparent bg-gradient-to-r from-third to-secondary'>
           Welcome to IHA
         </h1>
       </div>
       <div className='w-screen grid place-content-center'>
         <Image
           src="/group2.svg"
-          className="object-contain mix-blend-screen filter brightness-110 contrast-8"
+          className="object-contain mix-blend-screen saturate-150"
           width={1000}
           height={1000}
           quality={90}
@@ -99,7 +99,7 @@ function HomeBackgroundImage() {
         />
       </div>
       <div className='grid place-content-center my-8 mx-5'>
-        <p className='text-2xl mb-4 text-third font-title text-center'>
+        <p className='text-2xl mb-4 text-third font-title text-center bg-clip-text text-transparent bg-gradient-to-r from-third to-secondary '>
           Ihsan Healthcare Association at University of Texas at Dallas
         </p>
        <Button />
