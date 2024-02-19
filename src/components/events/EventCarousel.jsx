@@ -1,5 +1,6 @@
 'use client'
 import React from 'react';
+import Image from 'next/image';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 
@@ -40,14 +41,14 @@ const EventCarousel = ({ events }) => {
           },
         },
       }}
-      className=" mx-4 md:mx-10 pb:6 md:pb-12  md:p-8 p-6 w-screen "
+      className=" mx-6 md:mx-10 pb:6 md:pb-12  md:p-8 pb-12 px-8 w-screen "
     >
       
       {events.map((event, index) => (
-        <SplideSlide key={index} className="event-slide flex flex-col items-center  bg-main p-6 text-white rounded-2xl font-body  md:h-auto ">
-          <img src="/image-holder2.webp" alt="Event Image" className='md:h-64 md:w-80 w-screen h-64 rounded-lg object-cover ' />
+        <SplideSlide key={index} className="event-slide flex flex-col items-center p-6 text-white rounded-2xl font-body md:h-auto backdrop-sepia-0 bg-black/30  ">
+          <Image src={event.image} height={500} width={500} alt="Event Image" className='md:h-64 md:w-80 w-screen h-64 rounded-lg object-cover ' />
           <h3 className='font-subTitle pt-2 text-xl md:text-2xl'>{event.title}</h3>
-          <p className='font-body text-base font-light'>{event.description}</p>
+          <p className='font-body text-base font-light'>{event.date}</p>
         </SplideSlide>
       ))}
     </Splide>

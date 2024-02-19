@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 const MissionPage = () => {
   return (
-    <div className="flex flex-col justify-center md:mt-36 mt-10 items-center pb-8 lg:pb-28 ">
+    <div className="flex flex-col justify-start  md:mt-36 mt-10 items-center  ">
       <h1 className="md:text-4xl text-3xl font-semibold text-center font-title pb-4 md:-mt-24">Our Mission</h1>
       <div className="flex flex-col  items-center md:flex-row gap-4 p-4">
         <div className="md:w-1/2 flex  justify-center">

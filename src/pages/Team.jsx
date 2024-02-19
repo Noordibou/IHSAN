@@ -42,6 +42,31 @@ const teamMembers = [
   image: '/ayah.jpg',
   },
   {
+    name: 'Warda Jamil',
+    role: 'Clinical Coordinator',
+    major: 'Neuroscience',
+    track: 'Pre-Health',
+    graduation: '2026',
+    description: "I am a Neuroscience major on the pre Health track expected to graduate in 2026! I like to play volleyball when I get the chance and I also love to read. I am currently an undergraduate research assistant for Dr. Price Pain Lab here at UTD. I can’t wait to see everyone come together through IHSAN and build a community between everyone on the various health tracks.",
+    image: '/warda.jpg',
+  },
+  {
+    name: 'Marwan Khan',
+    role: 'Clinical Coordinator',
+    major: 'Psychology',
+    track: 'Pre-Med',
+    graduation: 'Spring 2024',
+    description: "I am thrilled for the events we have planned this semester. With a background enriched by diverse opportunities, I’m eager to contribute and support all students embarking on their healthcare journey! Fun Fact: I love to spend my free time playing video games as well as soccer with my friends.",
+    image: '/marwan.jpg',
+    },
+      {
+        name: 'Murtaza Alvi',
+        role: 'Clinical Coordinator',
+        major: 'Healthcare Studies (Pre-Med)',
+        description: "I am glad to be a part of the board this year and look forward to hosting clinical events on campus and providing mentorship to other students to excel in their pursued education related to medicine. I aim to not only make a local impact but also a global one by working alongside like-minded individuals. I have worked as a Certified Pharmacy Technician, but currently, I am a Medical Assistant at a pain management clinic. I also volunteer at Allen Psychiatry as well as the Health Clinic at the Islamic Center of Frisco. In my free time, I enjoy playing basketball with my friends and doing car photography.",
+        image: '/murtaza.jpg',
+        },
+  {
     name: 'Faatin Faisal',
     role: 'Social Media Manager',
     major: 'Biology with a minor in Child Development',
@@ -77,6 +102,8 @@ const teamMembers = [
       image: '/ismahan.jpg',
     },
     
+
+    
     
     
 ];
@@ -98,7 +125,7 @@ const TeamPage = () => {
               alt={member.name}
               width={400}
               height={400}
-              className="rounded-full h-64 w-64 md:h-80 md:w-80 object-cover border-dashed border-4 border-third items-center"
+              className="object-center rounded-full h-64 w-64 md:h-80 md:w-80 object-cover border-dashed border-4 border-third items-center"
             />
           </div>
           <div className="md:w-1/2 md:px-6 text-center md:text-start bg-third/50 py-2 px-2 rounded-xl">

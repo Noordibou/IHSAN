@@ -15,9 +15,9 @@ const DesktopNav = ({ toggle }) => {
     {
       title: "Services",
       subheaders: [
-        { title: "Social Events", link: "/social" },
-        { title: "Workshops", link: "/workshops" },
-        { title: "Volunteering", link: "/volunteering" },
+        { title: "Social Events", link: "/events/social" },
+        { title: "Workshops", link: "/events/workshops" },
+        { title: "Volunteering", link: "/events/volunteering" },
       ],
     },
     {
