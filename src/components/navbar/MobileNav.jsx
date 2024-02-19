@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const MobileNav = ({ isOpen, toggle }) => {
   const navs = [
@@ -14,9 +15,9 @@ const MobileNav = ({ isOpen, toggle }) => {
     {
       title: "Services",
       subheaders: [
-        { title: "Social Events", link: "/social" },
-        { title: "Workshops", link: "/workshops" },
-        { title: "Volunteering", link: "/volunteering" }
+        { title: "Social Events", link: "/events/social" },
+        { title: "Workshops", link: "/events/workshops" },
+        { title: "Volunteering", link: "/events/volunteering" }
       ]
     },
     {
@@ -27,6 +28,39 @@ const MobileNav = ({ isOpen, toggle }) => {
       ]
     }
   ];
+
+  const socialLinks = [
+    {
+     
+      href: "mailto:ihsanhealthcareutd@gmail.com",
+      src:"https://img.icons8.com/material-outlined/48/1A1A1A/new-post.png",
+      width: 48,
+      height: 48,
+      alt: "email",
+    },
+    {
+      href: "https://www.instagram.com/ihsanhealthcareutd/",
+      src:"https://img.icons8.com/sf-regular/48/1A1A1A/instagram-new.png",
+      width: 48,
+      height: 48,
+      alt: "instagram",
+    },
+
+  ];
+
+  const renderSocialLinks = () => {
+    return socialLinks.map(({ href, src, width, height, alt }, index) => (
+      <Link key={index} href={href} target="_blank">
+        <Image
+          src={src}
+          width={width}
+          height={height}
+          alt={alt}
+          className="mt-2 w-10 h-10 mr-1 cursor-pointer  hover:opacity-40 transition duration-300 ease-in-out"
+        />
+      </Link>
+    ));
+  };
 
   return (
     <>
@@ -68,10 +102,11 @@ const MobileNav = ({ isOpen, toggle }) => {
             </li>
           ))}
         <Link href="/membership">
-            <div className="font-body btn ml-5 bg-main text-white border-third border-2 rounded-2xl hover:bg-third hover:text-white hover:border-main ">
+            <div className="font-body btn ml-5 text-white rounded-full border-bodyColor bg-gradient-to-r from-main to-third hover:border-third border-4">
               Join IHSAN
             </div>
           </Link>
+          <div className="flex flex-row justify-center pl-8 ">{renderSocialLinks()}</div>
         </ul>
       </div>
     </>

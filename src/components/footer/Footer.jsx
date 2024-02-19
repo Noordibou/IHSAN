@@ -49,44 +49,44 @@ const Footer = () => {
 
   const renderFooterLinks = (links) => {
     return links.map(({ text, link }, index) => (
-      <Link key={index} href={link} target="_blank" className="link link-hover">
+      <Link key={index} href={link}  className="link link-hover">
         {text}
       </Link>
     ));
   };
 
   return (
-    <footer className="px-6 pt-4 pb-3 text-[#FEFAFA] bottom-[0] relative bg-main">
-      <div className="container mx-auto ">
-        <div className="grid grid-cols-3 gap-10 text-xs">
-          <div className="flex flex-col my-2">
-            <Link href="/">
-              <Image
-                src="/logo.jpg"
-                width={80}
-                height={11}
-                alt="logo"
-                className="cursor-pointer ml-3 rounded-xl"
-              />
-            </Link>
-          </div>
-          <div className="flex flex-col text-neutral-50 text-xs md:text-sm font-normal font-osans gap-1">
-          {renderFooterLinks(footerLinks1)}
-          </div>
-          <div className="flex flex-col text-neutral-50 text-xs md:text-sm font-normal font-osans gap-1">
-          {renderFooterLinks(footerLinks2)}
-          <div className="flex flex-row ">{renderSocialLinks()}</div>
-          </div>
+    <footer className="w-screen relative bottom-0 px-6 pt-4 pb-3 text-[#FEFAFA] bg-main">
+    <div className="container mx-auto">
+      <div className="grid grid-cols-3 gap-10 text-xs">
+        <div className="flex flex-col my-2">
+          <Link href="/">
+            <Image
+              src="/logo.jpg"
+              width={80}
+              height={11}
+              alt="logo"
+              className="cursor-pointer ml-3 rounded-xl"
+            />
+          </Link>
         </div>
-        <div className="w-full border-2 border-dark-red my-2 " />
-        <div className="flex justify-between lg:gap-48 xl:gap-72 ">
-          <div className="text-neutral-50 md:text-sm text-[10px] font-normal font-osans py-2">
-            © 2023 Ihsan Healthcare Association at University of Texas at Dallas. All rights
-            reserved. Privacy Policy
-          </div>
+        <div className="flex flex-col text-neutral-50 text-xs md:text-sm font-normal font-osans gap-1">
+          {renderFooterLinks(footerLinks1)}
+        </div>
+        <div className="flex flex-col text-neutral-50 text-xs md:text-sm font-normal font-osans gap-1">
+          {renderFooterLinks(footerLinks2)}
+          <div className="flex flex-row">{renderSocialLinks()}</div>
         </div>
       </div>
-    </footer>
+      <div className="w-full border-2 border-dark-red my-2" />
+      <div className="flex justify-between lg:gap-48 xl:gap-72">
+        <div className="text-neutral-50 md:text-sm text-[10px] font-normal font-osans py-2">
+          © 2023 Ihsan Healthcare Association at the University of Texas at Dallas. All rights reserved. Privacy Policy
+        </div>
+      </div>
+    </div>
+  </footer>
+  
   );
 };
 

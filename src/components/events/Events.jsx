@@ -3,30 +3,36 @@ import EventCarousel from '@/components/events/EventCarousel'
 export default function Events() {
     const event = [
         {
-          title: 'Event 1',
-          description: 'Description for Event 1 lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+          title: 'Bake Sale',
+          date: 'to be announced',
+          image: '/bake.png',
         },
         {
-          title: 'Event 2',
-          description: 'Description for Event 2',
+          title: 'GBM',
+          date: 'to be announced',
+          image: '/gbm1.png',
         },
         {
-          title: 'Event 3',
-          description: 'Description for Event 3',
+          title: 'Ramadan Social',
+          date: 'to be announced',
+          image: '/ramadan.png',
         },
         {
-          title: 'Event 4',
-          description: 'Description for Event 4',
+          title: 'Injection Workshop',
+          date: 'to be announced',
+          image: '/injection.png',
         },
         {
-          title: 'Event 5',
-          description: 'Description for Event 5',
+          title: 'GBM',
+          date: 'to be announced',
+          image: '/gbm1.png',
         },
+        
       ];
   return (
-    <div className='w-screen flex flex-col items-center'>
+    <div className='w-screen flex flex-col items-center  bg-gradient-to-r from-main to-third pb-4'>
       {/* <Blob /> */}
-      <h1 className="md:text-4xl text-3xl font-semibold text-center font-title mb-8 mt-12">Upcoming club events</h1>
+      <h1 className="md:text-4xl text-[26px] font-semibold text-center font-title mb-8 mt-12 text-bodyColor uppercase">Upcoming club events</h1>
       <EventCarousel events={event}  />
     </div>
   )

@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "IHSAN",
   description:
-    " Ihsan for Healthcare was created to uplift students with plans to pursue healthcare post-graduation.",
+    "Ihsan for Healthcare was created to uplift students with plans to pursue healthcare post-graduation.",
 };
 
 export default function RootLayout({ children }) {
@@ -21,12 +21,12 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      {/* <link rel="icon" href="/logo1.png" sizes="32X32" /> */}
-      <body className=" text-black bg-bodyColor">
+      <body className="text-black bg-bodyColor">
         <Navbar />
-        {children}
+        <main className="flex-1 min-h-[60vh] ">{children}</main>
         <Footer />
       </body>
     </html>
   );
 }
+
