@@ -45,9 +45,9 @@ const EventCarousel = ({ events }) => {
     >
       
       {events.map((event, index) => (
-        <SplideSlide key={index} className="event-slide flex flex-col items-center p-6 text-white rounded-2xl font-body md:h-auto backdrop-sepia-0 bg-black/30  ">
+        <SplideSlide key={index} className="event-slide flex flex-col items-center p-6 text-white rounded-2xl font-body md:h-auto bg-black/30  ">
           <Image src={event.image} height={500} width={500} alt="Event Image" className='md:h-64 md:w-80 w-screen h-64 rounded-lg object-cover ' />
-          <h3 className='font-subTitle pt-2 text-xl md:text-2xl'>{event.title}</h3>
+          <h3 className='font-subTitle pt-2 text-xl md:text-2xl'>{event.name}</h3>
           <p className='font-body text-base font-light'>{event.date}</p>
         </SplideSlide>
       ))}

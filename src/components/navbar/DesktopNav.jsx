@@ -31,7 +31,7 @@ const DesktopNav = ({ toggle }) => {
 
   return (
     <>
-      <div className="navbar justify-between p-0 bg-bodyColor px-2 z-30 shadow font-body">
+      <div className="navbar justify-between p-1 bg-bodyColor px-2 z-30 shadow font-body">
         <Logo />
         <button
           type="button"
