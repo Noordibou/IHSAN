@@ -1,23 +1,30 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { getEvents, createEvent, updateEvent, deleteEvent } from "@/api/event";
 import { formatDate } from "@/utils/date";
+import FileBase from "react-file-base64";
 
 export default function Admin() {
   const [events, setEvents] = useState([]);
   const [newEvent, setNewEvent] = useState({
     name: "",
-    date: new Date(),
+    image: "",
+    date: null,
     time: "",
     location: "",
     category: "social",
     description: "",
   });
 
+  const handleFileUpload = (e) => {
+    setNewEvent({ ...newEvent, image: e.base64 });
+  };
   const [isEditing, setIsEditing] = useState(false);
   const [editedEvent, setEditedEvent] = useState({
     id: "",
     name: "",
+    image: "",
     date: "",
     time: "",
     location: "",
@@ -35,17 +42,21 @@ export default function Admin() {
     });
   };
 
+  const [isFormVisible, setIsFormVisible] = useState(false);
+
   const handleAddEvent = () => {
     createEvent(newEvent).then(() => {
       fetchEvents();
       setNewEvent({
         name: "",
+        image: "",
         date: new Date(),
         time: "",
         location: "",
         category: "social",
         description: "",
       });
+      setIsFormVisible(false); // Hide the form after adding an event
     });
   };
 
@@ -61,6 +72,7 @@ export default function Admin() {
     setEditedEvent({
       id: event._id,
       name: event.name,
+      image: event.image,
       date: formattedDate,
       time: event.time,
       location: event.location,
@@ -78,6 +90,7 @@ export default function Admin() {
       setEditedEvent({
         id: "",
         name: "",
+        image: "",
         date: "",
         time: "",
         location: "",
@@ -92,6 +105,7 @@ export default function Admin() {
     setEditedEvent({
       id: "",
       name: "",
+      image: "",
       date: "",
       time: "",
       location: "",
@@ -101,90 +115,55 @@ export default function Admin() {
   };
 
   return (
-    <div>
-      <h1>Admin Page</h1>
+    <div className="flex flex-col items-center justify-center min-h-[72vh] gap-8 mx-8">
+      <h1 className="text-4xl font-bold mb-4 mt-6 font-title">Admin Page</h1>
       {/* Display existing events */}
-      <ul>
+      <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 ">
         {events.map((event) => (
-          <li key={event._id}>
-            {event.name} - {event.description}- {formatDate(event.date)}-
-            {event.category}-{event.time}{" "}
+          <li
+            key={event._id}
+            className="flex flex-col justify-between items-center py-2 bg-white bg-opacity-90 rounded-lg shadow-lg p-4 mb-8"
+          >
+            <div className="flex flex-col">
+              <Image
+                src={event.image}
+                height={500}
+                width={500}
+                alt="Event Image"
+                className="md:h-34 md:w-64 h-64 rounded-lg object-cover "
+              />
+            </div>
+            <div className="flex flex-col">
+              <h2 className="text-lg font-semibold text-gray-800">
+                {event.name}
+              </h2>
+              <p className="text-gray-600">
+                {formatDate(event.date)} - {event.category}
+              </p>
+              <p className="text-gray-600">{event.description}</p>
+            </div>
             {!isEditing && (
-              <>
-                <button onClick={() => handleEditEvent(event)}>Edit</button>{" "}
-                <button onClick={() => handleDeleteEvent(event._id)}>
+              <div className="flex space-x-2">
+                <button
+                  onClick={() => handleEditEvent(event)}
+                  className="bg-yellow-500 hover:bg-yellow-600 text-white py-1 px-3 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400 transition duration-200"
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => handleDeleteEvent(event._id)}
+                  className="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded-md focus:outline-none focus:ring-2 focus:ring-red-400 transition duration-200"
+                >
                   Delete
                 </button>
-              </>
+              </div>
             )}
           </li>
         ))}
       </ul>
-      {/* Add new event form */}
-      <h2>Add New Event</h2>
-      <form>
-        <label>
-          Name:
-          <input
-            type="text"
-            value={newEvent.name}
-            onChange={(e) => setNewEvent({ ...newEvent, name: e.target.value })}
-            className="bg-bodyColor border-2 rounded border-main"
-          />
-        </label>
-        <label>
-          Date:
-          <input
-            type="date"
-            value={newEvent.date.toISOString().split("T")[0]}
-            onChange={(e) =>
-              setNewEvent({ ...newEvent, date: new Date(e.target.value) })
-            }
-            className="bg-bodyColor border-2 rounded border-main"
-          />
-        </label>
-        <label>
-          Time:
-          <input
-            type="time"
-            value={newEvent.time}
-            onChange={(e) => setNewEvent({ ...newEvent, time: e.target.value })}
-            className="bg-bodyColor border-2 rounded border-main"
-          />
-        </label>
 
-        <label>
-          Category:
-          <select
-            value={newEvent.category}
-            onChange={(e) =>
-              setNewEvent({ ...newEvent, category: e.target.value })
-            }
-            className="bg-bodyColor border-2 rounded border-main"
-          >
-            <option value="social">Social</option>
-            <option value="workshop">Workshop</option>
-            <option value="volunteer">Volunteer</option>
-            <option value="other">Other</option>
-          </select>
-        </label>
-        <label>
-          Description:
-          <textarea
-            value={newEvent.description}
-            onChange={(e) =>
-              setNewEvent({ ...newEvent, description: e.target.value })
-            }
-            className="bg-bodyColor border-2 rounded border-main"
-          />
-        </label>
-        <button type="button" onClick={handleAddEvent}>
-          Add Event
-        </button>
-      </form>
-
-      {/* Edit event form */}
-      {isEditing && (
+       {/* Edit event form */}
+       {isEditing && (
         <div>
           <h2>Edit Event</h2>
           <form>
@@ -199,7 +178,19 @@ export default function Admin() {
                 onChange={(e) =>
                   setEditedEvent({ ...editedEvent, name: e.target.value })
                 }
-                className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring focus:border-main"
+                className="w-full bg-bodyColor px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700">
+                Image:
+              </label>
+              <FileBase
+                type="file"
+                multiple={false}
+                onDone={(e) => setEditedEvent({ ...editedEvent, image: e.base64 })}
+                className="w-full bg-bodyColor px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
               />
             </div>
 
@@ -216,7 +207,7 @@ export default function Admin() {
                     date: new Date(e.target.value),
                   })
                 }
-                className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring focus:border-main"
+                className="bg-bodyColor w-full px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
               />
             </div>
 
@@ -229,7 +220,7 @@ export default function Admin() {
                 onChange={(e) =>
                   setEditedEvent({ ...editedEvent, category: e.target.value })
                 }
-                className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring focus:border-main"
+                className="bg-bodyColor w-full px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
               >
                 <option value="social">Social</option>
                 <option value="workshop">Workshop</option>
@@ -251,7 +242,7 @@ export default function Admin() {
                     description: e.target.value,
                   })
                 }
-                className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring focus:border-main"
+                className="bg-bodyColor w-full px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
               />
             </div>
 
@@ -274,6 +265,86 @@ export default function Admin() {
           </form>
         </div>
       )}
+
+      {/* Add new event form */}
+      <div className="mb-4 flex flex-col justify-center items-center">
+        <button
+          onClick={() => setIsFormVisible(!isFormVisible)}
+          className="bg-main hover:bg-third text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-main transition duration-200 mb-4 w-64"
+        >
+          {isFormVisible ? "Hide Form" : "Add New Event"}
+        </button>
+        {isFormVisible && ( // Conditionally render the form
+          <form className="flex flex-col gap-4">
+            <label>
+              Name:
+              <input
+                type="text"
+                value={newEvent.name}
+                onChange={(e) =>
+                  setNewEvent({ ...newEvent, name: e.target.value })
+                }
+                className="bg-bodyColor border-2 rounded border-main"
+              />
+            </label>
+            <label>
+              Image:
+              <FileBase
+                type="file"
+                multiple={false}
+                onDone={handleFileUpload}
+                className="bg-bodyColor border-2 rounded border-main"
+              />
+            </label>
+            <label>
+              Date:
+              <input
+                type="date"
+                value={
+                  newEvent.date ? newEvent.date.toISOString().split("T")[0] : ""
+                }
+                onChange={(e) =>
+                  setNewEvent({
+                    ...newEvent,
+                    date: e.target.value ? new Date(e.target.value) : null,
+                  })
+                }
+                className="bg-bodyColor border-2 rounded border-main"
+              />
+            </label>
+
+            <label>
+              Category:
+              <select
+                value={newEvent.category}
+                onChange={(e) =>
+                  setNewEvent({ ...newEvent, category: e.target.value })
+                }
+                className="bg-bodyColor border-2 rounded border-main"
+              >
+                <option value="social">Social</option>
+                <option value="workshop">Workshop</option>
+                <option value="volunteer">Volunteer</option>
+                <option value="other">Other</option>
+              </select>
+            </label>
+            <label>
+              Description:
+              <textarea
+                value={newEvent.description}
+                onChange={(e) =>
+                  setNewEvent({ ...newEvent, description: e.target.value })
+                }
+                className="bg-bodyColor border-2 rounded border-main w-[80%] h-52"
+              />
+            </label>
+            <button type="button" onClick={handleAddEvent} className="bg-green-700 hover:bg-green-600 text-white py-1 px-3 rounded-md ">
+              Add Event
+            </button>
+          </form>
+        )}
+      </div>
+     
     </div>
   );
 }
