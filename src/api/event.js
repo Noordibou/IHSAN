@@ -14,8 +14,9 @@ export const createEvent = (event) => {
     return axios.post(URL, event);
     }
 
-export const updateEvent = (event) => {
-    return axios.put(`${URL}/${event._id}`, event);
+export const updateEvent = (id, event) => {
+    // console.log(`${event}`)
+    return axios.put(`${URL}/${id}`, event);
     }
 
 export const deleteEvent = (id) => {
