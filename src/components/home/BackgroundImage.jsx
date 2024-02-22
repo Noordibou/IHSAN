@@ -69,7 +69,7 @@ function HomeBackgroundImage() {
         )}
       </div>
       {isLargeScreen ? (
-        <div className='absolute w-[65%]  md:w-auto top-2/3 left-1/3 transform -translate-x-1/2 md:-translate-y-1/2 text-start lg:-translate-y-1/3 text-white pl-8  rounded'>
+        <div className='absolute w-[65%] md:w-auto top-2/3 left-1/3 transform -translate-x-1/2 md:-translate-y-1/2 text-start lg:-translate-y-1/3 text-white pl-8 rounded'>
           <h1 className='md:text-[52px] lg:text-[68px] font-bold  font-title text-bodyColor uppercase leading-[1] '>
             Welcome to IHA
           </h1>
