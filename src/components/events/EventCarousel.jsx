@@ -3,6 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
+import { formatDate } from '../../utils/date';
 
 
 const EventCarousel = ({ events }) => {
@@ -48,7 +49,7 @@ const EventCarousel = ({ events }) => {
         <SplideSlide key={index} className="event-slide flex flex-col items-center p-6 text-white rounded-2xl font-body md:h-auto bg-black/30  ">
           <Image src={event.image} height={500} width={500} alt="Event Image" className='md:h-64 md:w-80 w-screen h-64 rounded-lg object-cover ' />
           <h3 className='font-subTitle pt-2 text-xl md:text-2xl'>{event.name}</h3>
-          <p className='font-body text-base font-light'>{event.date}</p>
+          <p className='font-body text-base font-light'>{formatDate(event.date)}</p>
         </SplideSlide>
       ))}
     </Splide>
