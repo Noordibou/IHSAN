@@ -1,9 +1,25 @@
 import { Inter } from "next/font/google";
+import { Libre_Baskerville, Noto_Sans, Poppins, Arimo } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 
+
 const inter = Inter({ subsets: ["latin"] });
+const libreBaskerville = Libre_Baskerville({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+});
+const notoSans = Noto_Sans({ subsets: ["latin"] });
+const poppins = Poppins({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+});
+const arimo = Arimo({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+});
+
 export const metadata = {
   title: "IHSAN",
   description:
@@ -11,15 +27,11 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,500;1,400&family=Libre+Baskerville&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-          rel="stylesheet"
-        />
+      <link rel="icon" href="/logo.jpg"/>
       </head>
       <body className="text-black bg-bodyColor">
         <Navbar />
@@ -29,4 +41,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-

@@ -41,7 +41,7 @@ const Logo = () => {
           alt="Logo"
           width={width < 738 ? "80" : "95"}
           height={width < 1024 ? "50" : "90"}
-          className="mt-1 -mb-2 ml-2"
+          className="mt-1 -mb-2 ml-2 h-auto w-auto cursor-pointer"
         />
       </Link>
      

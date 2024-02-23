@@ -89,7 +89,7 @@ function HomeBackgroundImage() {
       <div className='w-screen grid place-content-center'>
         <Image
           src="/group2.svg"
-          className="object-contain mix-blend-screen saturate-150"
+          className="object-contain mix-blend-screen saturate-150 h-auto w-auto"
           width={1000}
           height={1000}
           quality={90}
