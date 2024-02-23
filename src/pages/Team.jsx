@@ -20,7 +20,7 @@ const teamMembers = [
     major: 'Neuroscience',
     track:'Pre-Med',
     graduation: '',
-    description: "Being able to give like minded students clinical experiences. Working as a Certified Clinical Medical Assistant, Ungergraduate Reasearch Assistant for Interventional Cardiology at Medical City Fort Worth, Teaching Assistant for Introduction to Neuroscience with Dr. Raboune, Medical Director for Noorishment, Volunteer at Children's Hospital Dallas. Fun fact about me is that I have a twin brother!",
+    description: "What I am most excited about this semester is to be able to give like minded students clinical experiences. Apart from being apart of IHA I work as a Certified Clinical Medical Assistant (CCMA) in a Dermatology Office, Undergraduate Research Assistant in Burtons Lab, Undergraduate Teaching Assistant for Introduction to Neuroscience with Dr. Raboune, Medical Director for Noorishment , Mentor in MSA Mentorship Program, and PACU Volunteer at Children’s Health Hosptial Dallas. Outside of academics and work I enjoy going on hikes, photography and traveling with family. Fun fact: I have a twin brother.",
     image: '/rahil.jpg',
   },
   {
@@ -72,7 +72,7 @@ const teamMembers = [
     major: 'Biology with a minor in Child Development',
     track:'Pre-Dental',
     graduation: '2026',
-    description: "Faatin is a sophomore biology major with a minor in Child Development, on the pre-dental track with a planned graduation in 2026. She currently holds the position of Registered Dental Assistant (RDA) at a pediatric dental office. Finding immense fulfillment in working with children, Faatin enjoys witnessing their increasing comfort with dental procedures over time. She expresses excitement about the plethora of opportunities presented by the organization and looks forward to delving deeper into them. In her free time, she loves to hang out with her friends and family!",
+    description: "I am looking forward to welcoming new members and being an active member of the board. I am currently a Registered Dental Assistant (RDA) at a pediatric dental office. I love working with kids and seeing them grow comfortably in the office as I am excited to see this organization grow!  In my free time, I love to hang out with my friends and family!",
     image: '/faatin.jpg',
   },
     {
