@@ -76,7 +76,7 @@ const DesktopNav = ({ toggle }) => {
         </ul>
 
         <div className="hidden md:block">
-          <Link href="/membership">
+          <Link href="https://docs.google.com/forms/d/e/1FAIpQLSdB_jx8xHgkWbdwI5bhUUMrieFcu7a7PobW5ngwx44cYqHT0w/viewform" target="_blank">
             <div className="btn ml-5 md:flex bg-main text-white border-third border-2 rounded-2xl hover:bg-third hover:text-white hover:border-main font-subTitle">
               Join IHSAN
             </div>

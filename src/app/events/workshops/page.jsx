@@ -17,11 +17,11 @@ export default function WorkshopEvents() {
   const workshopEvents = events.filter(event => event.category === 'workshop');
 
   return (
-    <div className="flex items-center justify-center px-10 py-10 min-h-[72vh]">
+    <div className="flex flex-col justify-center min-h-[72vh] mb-10 px-8 font-body">
       {workshopEvents.length > 0 ? (
         // Display social events
         <div>
-      <h1 className=" text-center text-3xl md:text-4xl lg:text-5xl font-semibold font-title my-4">
+      <h1 className=" text-center text-2xl md:text-4xl lg:text-5xl font-semibold font-title my-4">
         Upcoming Workshops
       </h1>
           <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -57,7 +57,7 @@ export default function WorkshopEvents() {
                         alt={event.name}
                         width={300}
                         height={300}
-                        className="bg-main bg-opacity-40 p-4 rounded-xl mx-10"
+                        className="bg-main bg-opacity-40 p-4 rounded-xl mx-10 "
                       />
                     </div>
                   </div>

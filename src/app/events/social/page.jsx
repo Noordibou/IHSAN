@@ -17,11 +17,11 @@ export default function SocialEvents() {
   const socialEvents = events.filter((event) => event.category === "social");
 
   return (
-    <div className="flex flex-col justify-center min-h-[72vh] my-10 px-8 font-body">
+    <div className="flex flex-col justify-center min-h-[72vh] mb-10 mt-4 px-8 font-body">
       {socialEvents.length > 0 ? (
         // Display social events
         <div>
-      <h1 className=" text-center text-3xl md:text-4xl lg:text-5xl font-semibold font-title my-4">
+      <h1 className=" text-center text-2xl md:text-4xl lg:text-5xl font-semibold font-title my-4">
         Upcoming Social Events
       </h1>
           <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
