@@ -72,7 +72,7 @@ const teamMembers = [
     major: 'Biology with a minor in Child Development',
     track:'Pre-Dental',
     graduation: '2026',
-    description: "I am looking forward to welcoming new members and being an active member of the board. I am currently a Registered Dental Assistant (RDA) at a pediatric dental office. I love working with kids and seeing them grow comfortably in the office as I am excited to see this organization grow!  In my free time, I love to hang out with my friends and family!",
+    description: "I am looking forward to welcoming new members and being an active member of the board. I am currently a Registered Dental Assistant (RDA) at a pediatric dental office. I love working with kids and seeing them grow comfortably in the office as I am excited to see this organization grow! In my free time, I love to hang out with my friends and family!",
     image: '/faatin.jpg',
   },
     {
@@ -81,7 +81,7 @@ const teamMembers = [
     major: 'Healthcare Studies',
     track:'Pre-Med',
     graduation: '2026',
-    description: "Meet Hiba, she is a Healthcare Studies major and is on the Pre-Med track. She is graduating in 2026, she is excited for all the amazing opportunities this organization has in store. In her free time, Hiba loves spending time with her family and friends, and she is looking forward to meeting new people and forming new connections!",
+    description: "I am looking forward to be apart of this board and see muslims with the same interest in healthcare come together, I am a Healthcare Studies major and on the Pre-Med track. I am graduating in 2026, and am very excited for all the amazing opportunities this organization has in store. In my free time I love hanging out with my family and friends and look forward to meeting new people.",
     image: '/hiba.jpg',
     },
     {
@@ -90,7 +90,7 @@ const teamMembers = [
     major: 'Psychology',
     track:'Pre-Med',
     graduation: '2026',
-    description: "Aleena Aziz, a Psychology major on the pre-med track, is set to graduate in 2026. This year, she is eager to organize social events for pre-health students, fostering connections and contributing meaningfully to their communities. Outside of her academic pursuits, Aleena enjoys spending quality time with her family and two cats.",
+    description: "I am very excited to help premed students connect and network through social events, and bring the community together along with my team! I am a psychology major on the pre-med track, and I am also a scribe at Baylor Scott and White in Plano. When I'm not working, I am volunteering at health fairs and at the Islamic Center of Frisco clinic. In my free time I love to hang out at home with my family and go out with my friends!",
     image: '/aleena.jpg',
     },
     {
