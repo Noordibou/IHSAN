@@ -24,15 +24,13 @@ export const metadata = {
   title: "IHSAN",
   description:
     "Ihsan for Healthcare was created to uplift students with plans to pursue healthcare post-graduation.",
+    
 };
 
 export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <head>
-      <link rel="icon" href="/logo.jpg"/>
-      </head>
       <body className="text-black bg-bodyColor">
         <Navbar />
         <main className="flex-1 min-h-[60vh] ">{children}</main>
