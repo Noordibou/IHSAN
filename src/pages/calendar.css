@@ -12,14 +12,14 @@
 
 /* Default width for regular or max-width screens */
 .react-calendar {
-    width: 75%;
+    width: 80%;
     max-width: 100%;
 }
 
 /* Adjust width for small screens */
 @media (max-width: 767px) {
     .react-calendar {
-        line-height: 2em;
+        line-height: 2.2em;
     }
 }
 
