@@ -24,13 +24,13 @@ const Footer = () => {
 
   const footerLinks1 = [
     { text: "About Us", link: "/mission" },
-    { text: "Become a Member", link: "https://docs.google.com/forms/d/e/1FAIpQLSdB_jx8xHgkWbdwI5bhUUMrieFcu7a7PobW5ngwx44cYqHT0w/viewform"},
+    { text: "Become a Member", link: "https://docs.google.com/forms/d/e/1FAIpQLSedaHy3BNeiAv8R5ApYcRtCuOya8ceUnb88xYNYEHVMLM5fgA/viewform"},
     { text: "Contact Us", link: "mailto:ihsanhealthcareutd@gmail.com" },
   ];
 
   const footerLinks2 = [
-    { text: "Services", link: "/services" },
-    { text: "News & Events", link: "/news-and-events" },
+    { text: "Services", link: "/calendar" },
+    { text: "Resources", link: "/resources" },
   ];
 
   const renderSocialLinks = () => {

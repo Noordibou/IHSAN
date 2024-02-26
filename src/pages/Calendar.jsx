@@ -26,7 +26,6 @@ export default function Cal() {
           ...event,
           date: new Date(event.date),
         }));
-        console.log("Formatted Events:", formattedEvents);
         setEvents(formattedEvents);
       })
       .catch((error) => {
@@ -84,8 +83,8 @@ export default function Cal() {
       />
 
       <div className="flex flex-col gap-4">
-        <p className="text-lg text-main font-body my-6">
-          Select a date to view its events
+        <p className="text-lg text-main font-body font-bold my-6">
+        Select a day to view its scheduled events
         </p>
       </div>
     </div>
