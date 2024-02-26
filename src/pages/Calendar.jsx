@@ -110,7 +110,7 @@ function EventModal({ events, onClose }) {
     <Modal
       isOpen={isOpen}
       onRequestClose={onCloseModal}
-      className="bg-white fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mx-auto my-auto md:h-[30%] md:w-[35%] h-[45%] w-[50%] border-third border-2 rounded-xl gap-4 z-50 overflow-y-auto custom-scrollbar"
+      className="bg-white fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mx-auto my-auto md:h-[30%] md:w-[35%] h-[45%] w-[55%] border-third border-2 rounded-xl gap-4 z-50 overflow-y-auto custom-scrollbar"
     >
       <div className="flex flex-col justify-end items-end p-2">
         <button onClick={onCloseModal}>
