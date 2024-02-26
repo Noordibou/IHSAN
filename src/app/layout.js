@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className="text-black bg-bodyColor">
+      <body className="text-black bg-bodyColor overflow-y-auto custom-scrollbar">
         <Navbar />
         <main className="flex-1 min-h-[60vh] ">{children}</main>
         <Footer />

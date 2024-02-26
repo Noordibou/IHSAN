@@ -21,6 +21,12 @@ const DesktopNav = ({ toggle }) => {
       ],
     },
     {
+      title: "Calendar",
+      subheaders: [
+        { title: "All Upcoming Events", link: "/calendar" },
+      ],
+    },
+    {
       title: "More",
       subheaders: [
         { title: "Resources", link: "/resources" },

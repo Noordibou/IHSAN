@@ -5,3 +5,27 @@
 body {
   overflow-x: hidden;
 }
+
+.custom-scrollbar {
+  overflow-y: auto;
+  /* margin-right: 8px; */
+  
+  
+   /* Adjust the height as needed */
+  /* other styles */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #58778f;
+  border-radius: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f9f7f3;
+  
+  
+}
