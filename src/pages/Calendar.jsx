@@ -46,7 +46,7 @@ export default function Cal() {
       <div className="text-3xl font-title text-main mb-4">
         All Upcoming Events
       </div>
-      <ul className="list-disc flex gap-4 mb-4 font-body text-sm md:text-base">
+      <ul className="list-disc flex gap-4 mb-4 font-body text-xs md:text-base">
         <li className="flex items-center">
           <span className="w-4 h-4 mr-2 bg-[#aabbeb] rounded-full"></span>
           <span className="text-black">Social Events</span>
@@ -110,7 +110,7 @@ function EventModal({ events, onClose }) {
     <Modal
       isOpen={isOpen}
       onRequestClose={onCloseModal}
-      className="bg-white fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mx-auto my-auto md:h-[35%] md:w-[35%] h-[25%] w-[40%] border-third border-2 rounded-xl gap-4 z-50 overflow-y-auto custom-scrollbar"
+      className="bg-white fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mx-auto my-auto md:h-[30%] md:w-[35%] h-[45%] w-[50%] border-third border-2 rounded-xl gap-4 z-50 overflow-y-auto custom-scrollbar"
     >
       <div className="flex flex-col justify-end items-end p-2">
         <button onClick={onCloseModal}>
