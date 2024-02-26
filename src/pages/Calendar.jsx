@@ -42,7 +42,7 @@ export default function Cal() {
   };
 
   return (
-    <div className="mt-12 rounded-2xl flex flex-col items-center mb-8">
+    <div className="mt-8 md:mt-12 rounded-2xl flex flex-col items-center mb-8">
       <div className="text-3xl font-title text-main mb-4">
         All Upcoming Events
       </div>
