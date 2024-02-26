@@ -26,6 +26,12 @@ const MobileNav = ({ isOpen, toggle }) => {
         { title: "Resources", link: "/resources" },
         { title: "Donate", link: "/donate" } // Add the link for Donate
       ]
+    },
+    {
+      title: "Calendar",
+      subheaders: [
+        { title: "All Upcoming Events", link: "/calendar" }
+      ]
     }
   ];
 
@@ -100,7 +106,9 @@ const MobileNav = ({ isOpen, toggle }) => {
                 ))}
               </ul>
             </li>
+
           ))}
+          
         <Link href="https://docs.google.com/forms/d/e/1FAIpQLSedaHy3BNeiAv8R5ApYcRtCuOya8ceUnb88xYNYEHVMLM5fgA/viewform" target="_blank">
             <div className="font-body btn ml-5 text-white rounded-full border-bodyColor bg-gradient-to-r from-main to-third hover:border-third border-4">
               Join IHSAN
