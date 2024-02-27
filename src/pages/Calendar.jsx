@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import Modal from "react-modal";
+import { motion, useAnimation } from "framer-motion";
 import "@/pages/calendar.css";
 import { getEvents } from "@/api/event";
 import { formatDate } from "@/utils/date";
@@ -13,6 +14,8 @@ Modal.setAppElement("main");
 export default function Cal() {
   const [events, setEvents] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
+
+  const controls = useAnimation();
 
   useEffect(() => {
     fetchEvents();
@@ -41,12 +44,25 @@ export default function Cal() {
     setSelectedEvent(eventsOnDay);
   };
 
+  useEffect(() => {
+    controls.start({ opacity: 1 });
+  }, [controls]);
+
   return (
     <div className="mt-8 md:mt-12 rounded-2xl flex flex-col items-center mb-8">
-      <div className="text-3xl font-title text-main mb-4">
+      <motion.div
+      initial={{ opacity: 0 }}
+      animate={controls}
+      transition={{ duration: 0.6 }}
+      className="text-3xl font-title text-main mb-4">
         All Upcoming Events
-      </div>
-      <ul className="list-disc flex gap-4 mb-4 font-body text-xs md:text-base">
+      </motion.div>
+
+      <motion.ul 
+      initial={{ opacity: 0 }}
+      animate={controls}
+      transition={{ duration: 0.6, delay: 0.2}}
+      className="list-disc flex gap-4 mb-4 font-body text-xs md:text-base">
         <li className="flex items-center">
           <span className="w-4 h-4 mr-2 bg-[#aabbeb] rounded-full"></span>
           <span className="text-black">Social Events</span>
@@ -63,8 +79,12 @@ export default function Cal() {
           <span className="w-4 h-4 mr-2 bg-[#f3a3b5] rounded-full"></span>
           <span className="text-black">Other</span>
         </li>
-      </ul>
-
+      </motion.ul>
+<motion.div
+      initial={{ opacity: 0 }}  
+      animate={controls}
+      transition={{ duration: 0.6, delay: 0.4}}
+      className="flex flex-col items-center">
       <Calendar
         className="react-calendar my-4"
         tileClassName={({ date }) => {
@@ -76,17 +96,21 @@ export default function Cal() {
         }}
         onClickDay={handleClickDay}
       />
-
+</motion.div>
       <EventModal
         events={selectedEvent}
         onClose={() => setSelectedEvent(null)}
       />
 
-      <div className="flex flex-col gap-4">
+      <motion.div
+      initial={{ opacity: 0 }}
+      animate={controls}
+      transition={{ duration: 0.6, delay: 0.6}}
+       className="flex flex-col gap-4">
         <p className="text-lg text-main font-body font-bold my-6">
-        Select a day to view its scheduled events
+          Select a day to view its scheduled events
         </p>
-      </div>
+      </motion.div>
     </div>
   );
 }
