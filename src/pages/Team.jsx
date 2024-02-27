@@ -8,6 +8,8 @@ import teamMembers from '@/api/teamData';
 
 const members = teamMembers;
 
+// ... (imports remain unchanged)
+
 const TeamPage = () => {
   function FadeInSection({ children, delay = 0.4 }) {
     const controls = useAnimation();
@@ -18,16 +20,16 @@ const TeamPage = () => {
 
     useEffect(() => {
       if (inView) {
-        controls.start({ y: 0, opacity: 1 });
+        controls.start({ opacity: 1 });
       }
     }, [controls, inView]);
 
     return (
       <motion.div
         ref={ref}
-        initial={{ y: -10, opacity: 0 }}
+        initial={{ opacity: 0 }}
         animate={controls}
-        transition={{ duration: 0.6, delay }}
+        transition={{ duration: 0.8, delay }}
       >
         {children}
       </motion.div>
@@ -38,7 +40,7 @@ const TeamPage = () => {
     <div className="flex flex-col items-center">
       <h1 className="md:text-4xl text-3xl font-semibold font-title text-center mt-10 uppercase">Meet Our Officers</h1>
       {members.map((member, index) => (
-        <FadeInSection key={index} delay={index * 0.2}>
+        <FadeInSection key={index} delay={index * 0.1}>
           <div
             className={`flex flex-col rounded-lg mx-4 my-4 md:flex-row ${
               index % 2 === 0 ? 'md:flex-row-reverse' : ''
@@ -67,4 +69,3 @@ const TeamPage = () => {
 };
 
 export default TeamPage;
-
