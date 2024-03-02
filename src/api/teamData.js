@@ -10,7 +10,15 @@ const teamMembers = [
     image: "/omar.jpg",
   },
   {
-    name: "Syed Zubab Hassan",
+    name: "Murtaza Alvi",
+    role: "Vice President",
+    major: "Healthcare Studies (Pre-Med)",
+    description:
+      "I am glad to be a part of the board this year and look forward to hosting clinical events on campus and providing mentorship to other students to excel in their pursued education related to medicine. I aim to not only make a local impact but also a global one by working alongside like-minded individuals. I have worked as a Certified Pharmacy Technician, but currently, I am a Medical Assistant at a pain management clinic. I also volunteer at Allen Psychiatry as well as the Health Clinic at the Islamic Center of Frisco. In my free time, I enjoy playing basketball with my friends and doing car photography.",
+    image: "/murtaza.jpg",
+  },
+  {
+    name: "Zubab Syed",
     role: "Vice President",
     major: "Neuroscience",
     track: "Pre-Med",
@@ -18,14 +26,6 @@ const teamMembers = [
     description:
       "I'm excited to work alongside very capable and genuine individuals and not only build more connections but also help those who share my goal of becoming a physician. I'm currently an undergraduate research assistant at the Kolber Pain and Stress lab at UTD. I’m also a member of ALM fraternity. I like to play basketball, love playing golf, and would like to spend more time on the golf course this year.",
     image: "/syed.jpg",
-  },
-  {
-    name: "Murtaza Alvi",
-    role: "Vice President",
-    major: "Healthcare Studies (Pre-Med)",
-    description:
-      "I am glad to be a part of the board this year and look forward to hosting clinical events on campus and providing mentorship to other students to excel in their pursued education related to medicine. I aim to not only make a local impact but also a global one by working alongside like-minded individuals. I have worked as a Certified Pharmacy Technician, but currently, I am a Medical Assistant at a pain management clinic. I also volunteer at Allen Psychiatry as well as the Health Clinic at the Islamic Center of Frisco. In my free time, I enjoy playing basketball with my friends and doing car photography.",
-    image: "/murtaza.jpg",
   },
   {
     name: "Ayah Hamdan",
