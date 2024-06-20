@@ -12,7 +12,8 @@ const teamMembers = [
   {
     name: "Murtaza Alvi",
     role: "Vice President",
-    major: "Healthcare Studies (Pre-Med)",
+    major: "Healthcare Studies",
+    track: "Pre-Med",
     description:
       "I am glad to be a part of the board this year and look forward to hosting clinical events on campus and providing mentorship to other students to excel in their pursued education related to medicine. I aim to not only make a local impact but also a global one by working alongside like-minded individuals. I have worked as a Certified Pharmacy Technician, but currently, I am a Medical Assistant at a pain management clinic. I also volunteer at Allen Psychiatry as well as the Health Clinic at the Islamic Center of Frisco. In my free time, I enjoy playing basketball with my friends and doing car photography.",
     image: "/murtaza.jpg",

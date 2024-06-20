@@ -50,7 +50,7 @@ export default function WorkshopEvents() {
         <FadeInSection>
           <div>
             <h1 className=" text-center text-2xl md:text-4xl lg:text-5xl font-semibold font-title my-4">
-              Upcoming Workshops
+              Workshops
             </h1>
             <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {workshopEvents.map((event) => (
@@ -81,8 +81,8 @@ export default function WorkshopEvents() {
                       </p>
                    
                       <div className=" flex flex-col items-center my-2">
-                        <Image
-                          src={event.image}
+                        <img
+                          src={`https://ihsanutd-backend.vercel.app/uploads/${event.image}`}
                           alt={event.name}
                           width={300}
                           height={300}

@@ -1,16 +1,24 @@
 'use client'
 import React from 'react';
-import Image from 'next/image';
 import { motion, useAnimation } from 'framer-motion';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import teamMembers from '@/api/teamData';
+import { getMembers } from "@/api/team";
 
-const members = teamMembers;
-
-// ... (imports remain unchanged)
 
 const TeamPage = () => {
+  const [members, setMembers] = useState([]);
+  useEffect(() => {
+    fetchMembers();
+  }, []);
+
+  const fetchMembers = () => {
+    getMembers().then((response) => {
+      setMembers(response.data);
+    });
+  };
+
+
   function FadeInSection({ children, delay = 0.4 }) {
     const controls = useAnimation();
     const [ref, inView] = useInView({
@@ -47,19 +55,19 @@ const TeamPage = () => {
             } gap-4 items-center p-8`}
           >
             <div className="md:w-1/2 flex justify-center">
-              <Image
-                src={member.image}
-                alt={member.name}
+              <img
+                src={`https://ihsanutd-backend.vercel.app/uploads/${member.image ?? ''}`}
+                alt={member.name ?? ''}
                 width={400}
                 height={400}
                 className="object-center rounded-full h-64 w-64 md:h-80 md:w-80 object-cover border-dashed border-4 border-third items-center"
               />
             </div>
-            <div className="md:w-1/2 md:px-6 text-center md:text-start bg-gradient-to-r from-third to-gray-200  py-2 px-2 rounded-xl">
-              <h2 className="md:text-2xl text-xl font-title font-semibold">{member.name}</h2>
-              <p className="text-gray-600 font-subTitle font-medium ">{member.role}</p>
-              <p className="text-gray-600 font-subTitle font-medium">{member.major} ({member.track})</p>
-              <p className="text-black font-body font-base">{member.description}</p>
+            <div className="md:w-1/2 md:px-6 text-center md:text-start bg-gradient-to-r from-third to-gray-200 py-2 px-2 rounded-xl">
+              <h2 className="md:text-2xl text-xl font-title font-semibold">{member.name ?? ''}</h2>
+              <p className="text-gray-600 font-subTitle font-medium">{member.role ?? ''}</p>
+              <p className="text-gray-600 font-subTitle font-medium">{(member.major ?? '') + (member.track ? ` (${member.track})` : '')}</p>
+              <p className="text-black font-body font-base">{member.description ?? ''}</p>
             </div>
           </div>
         </FadeInSection>
@@ -68,4 +76,6 @@ const TeamPage = () => {
   );
 };
 
+
 export default TeamPage;
+
