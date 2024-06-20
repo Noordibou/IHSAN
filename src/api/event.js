@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = 'https://ihsanutd-backend.vercel.app/api/event';
+const URL = 'https://ihsanutd-backend.vercel.app/api/event'
 
 export const getEvents = () => {
     return axios.get(URL);
@@ -14,10 +14,13 @@ export const createEvent = (event) => {
     return axios.post(URL, event);
     }
 
-export const updateEvent = (id, event) => {
-    // console.log(`${event}`)
-    return axios.put(`${URL}/${id}`, event);
-    }
+export const updateEvent = (id, formData) => {
+    return axios.put(`${URL}/${id}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+    };
 
 export const deleteEvent = (id) => {
     return axios.delete(`${URL}/${id}`);
