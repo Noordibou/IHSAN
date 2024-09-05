@@ -12,6 +12,7 @@ export default function TeamEdit() {
     graduation: "",
     description: "",
     image: "",
+    number: "",
   });
   const [isEditing, setIsEditing] = useState(false);
   const [editedMember, setEditedMember] = useState({
@@ -23,6 +24,7 @@ export default function TeamEdit() {
     graduation: "",
     description: "",
     image: "",
+    number: "",
   });
   const [isFormVisible, setIsFormVisible] = useState(false);
   const editFormRef = useRef(null);
@@ -69,6 +71,7 @@ export default function TeamEdit() {
         graduation: "",
         description: "",
         image: "",
+        number: "",
       });
       setIsFormVisible(false);
     });
@@ -90,6 +93,7 @@ export default function TeamEdit() {
       graduation: member.graduation,
       description: member.description,
       image: member.image,
+      number: member.number,
     });
     setIsEditing(true);
   };
@@ -198,6 +202,15 @@ export default function TeamEdit() {
               />
             </label>
             <label>
+              Number:
+              <input
+                type="text"
+                value={newMember.number}
+                onChange={(e) => setNewMember({ ...newMember, number: e.target.value })}
+                className="bg-stone-200 border-2 rounded border-main"
+              />
+            </label>
+            <label>
               Description:
               <textarea
                 value={newMember.description}
@@ -240,6 +253,7 @@ export default function TeamEdit() {
               </div>
               <p className="text-gray-600">{member.major}</p>
               <p className="text-gray-600">{member.track}</p>
+              <p className="text-gray-600">{member.number}</p>
               <p className="text-gray-600">{member.graduation}</p>
               <p className="text-gray-600">{member.description}</p>
             </div>
@@ -330,6 +344,17 @@ export default function TeamEdit() {
                 type="text"
                 value={editedMember.graduation}
                 onChange={(e) => setEditedMember({ ...editedMember, graduation: e.target.value })}
+                className="w-full bg-stone-200 px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700">
+                Number:
+              </label>
+              <input
+                type="text"
+                value={editedMember.number}
+                onChange={(e) => setEditedMember({ ...editedMember, number: e.target.value })}
                 className="w-full bg-stone-200 px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
               />
             </div>

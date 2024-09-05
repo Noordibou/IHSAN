@@ -1,23 +1,26 @@
-'use client'
-import React from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
-import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { getMembers } from "@/api/team";
 
-
 const TeamPage = () => {
   const [members, setMembers] = useState([]);
+
   useEffect(() => {
     fetchMembers();
   }, []);
 
   const fetchMembers = () => {
     getMembers().then((response) => {
-      setMembers(response.data);
+      // Sort members based on their number
+      const sortedMembers = response.data.sort((a, b) => {
+        // Convert number to integer for proper comparison
+        return parseInt(a.number) - parseInt(b.number);
+      });
+      setMembers(sortedMembers);
     });
   };
-
 
   function FadeInSection({ children, delay = 0.4 }) {
     const controls = useAnimation();
@@ -48,7 +51,7 @@ const TeamPage = () => {
     <div className="flex flex-col items-center">
       <h1 className="md:text-4xl text-3xl font-semibold font-title text-center mt-10 uppercase">Meet Our Officers</h1>
       {members.map((member, index) => (
-        <FadeInSection key={index} delay={index * 0.1}>
+        <FadeInSection key={member.number} delay={index * 0.1}>
           <div
             className={`flex flex-col rounded-lg mx-4 my-4 md:flex-row ${
               index % 2 === 0 ? 'md:flex-row-reverse' : ''
@@ -76,6 +79,4 @@ const TeamPage = () => {
   );
 };
 
-
 export default TeamPage;
-
