@@ -39,14 +39,14 @@ const EventCarousel = ({ events }) => {
     if (eventList.length === 0) {
       return (
         <p className='place-content-center grid font-cri text-xl font-semibold bg-third w-screen h-24 bg-opacity-40'>
-          No {title.toLowerCase()}
+          COMING SOON
         </p>
       );
     }
 
     return (
       <div className="mb-12">
-        <h2 className="text-2xl font-bold mb-4 text-center">{title}</h2>
+        {/* <h2 className="text-2xl font-bold mb-4 text-center">{title}</h2> */}
         <Splide
           options={{
             type: 'slide',
@@ -85,7 +85,7 @@ const EventCarousel = ({ events }) => {
 
   return (
     <div>
-      {renderCarousel(currentEvents, "Current and Upcoming Events")}
+      {renderCarousel(currentEvents)}
     </div>
   );
 };
