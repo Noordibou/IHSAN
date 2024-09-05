@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import TeamEdit from "@/components/Admin/team";
 import EventEdit from "@/components/Admin/events";
 
-const ADMIN_PASSWORD = "1234";  // Replace with your actual password
+const ADMIN_PASSWORD = "1320";  // Replace with your actual password
 
 export default function Admin() {
   const [activeTab, setActiveTab] = useState("members");

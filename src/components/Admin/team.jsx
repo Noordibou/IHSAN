@@ -13,6 +13,7 @@ export default function TeamEdit() {
     description: "",
     image: "",
   });
+  const [isEditing, setIsEditing] = useState(false);
   const [editedMember, setEditedMember] = useState({
     id: "",
     name: "",
@@ -23,7 +24,6 @@ export default function TeamEdit() {
     description: "",
     image: "",
   });
-  const [isEditing, setIsEditing] = useState(false);
   const [isFormVisible, setIsFormVisible] = useState(false);
   const editFormRef = useRef(null);
 
@@ -53,8 +53,7 @@ export default function TeamEdit() {
     setEditedMember({ ...editedMember, image: file });
   };
 
-  const handleAddMember = (e) => {
-    e.preventDefault();
+  const handleAddMember = () => {
     const formData = new FormData();
     Object.keys(newMember).forEach((key) => {
       formData.append(key, newMember[key]);
@@ -143,112 +142,80 @@ export default function TeamEdit() {
         </button>
 
         {isFormVisible && (
-          <form className="md:grid md:grid-cols-2 gap-3 font-body">
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700">
-                Name:
-              </label>
+          <form className="flex flex-col gap-4">
+            <label>
+              Name:
               <input
                 type="text"
                 value={newMember.name}
-                onChange={(e) =>
-                  setNewMember({ ...newMember, name: e.target.value })
-                }
-                className="w-full bg-stone-200 px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
+                onChange={(e) => setNewMember({ ...newMember, name: e.target.value })}
+                className="bg-stone-200 border-2 rounded border-main"
               />
-            </div>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700">
-                Image:
-              </label>
+            </label>
+            <label>
+              Image:
               <input
                 type="file"
                 accept="image/*"
                 onChange={handleFileChange}
                 className="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
               />
-            </div>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700">
-                Role:
-              </label>
+            </label>
+            <label>
+              Role:
               <input
                 type="text"
                 value={newMember.role}
-                onChange={(e) =>
-                  setNewMember({ ...newMember, role: e.target.value })
-                }
-                className="w-full bg-stone-200 px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
+                onChange={(e) => setNewMember({ ...newMember, role: e.target.value })}
+                className="bg-stone-200 border-2 rounded border-main"
               />
-            </div>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700">
-                Major:
-              </label>
+            </label>
+            <label>
+              Major:
               <input
                 type="text"
                 value={newMember.major}
-                onChange={(e) =>
-                  setNewMember({ ...newMember, major: e.target.value })
-                }
-                className="w-full bg-stone-200 px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
+                onChange={(e) => setNewMember({ ...newMember, major: e.target.value })}
+                className="bg-stone-200 border-2 rounded border-main"
               />
-            </div>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700">
-                Track:
-              </label>
+            </label>
+            <label>
+              Track:
               <input
                 type="text"
                 value={newMember.track}
-                onChange={(e) =>
-                  setNewMember({ ...newMember, track: e.target.value })
-                }
-                className="w-full bg-stone-200 px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
+                onChange={(e) => setNewMember({ ...newMember, track: e.target.value })}
+                className="bg-stone-200 border-2 rounded border-main"
               />
-            </div>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700">
-                Graduation:
-              </label>
+            </label>
+            <label>
+              Graduation:
               <input
                 type="text"
                 value={newMember.graduation}
-                onChange={(e) =>
-                  setNewMember({
-                    ...newMember,
-                    graduation: e.target.value,
-                  })
-                }
-                className="w-full bg-stone-200 px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
+                onChange={(e) => setNewMember({ ...newMember, graduation: e.target.value })}
+                className="bg-stone-200 border-2 rounded border-main"
               />
-            </div>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700">
-                Description:
-              </label>
+            </label>
+            <label>
+              Description:
               <textarea
                 value={newMember.description}
-                onChange={(e) =>
-                  setNewMember({
-                    ...newMember,
-                    description: e.target.value,
-                  })
-                }
-                className="w-full bg-stone-200 px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
+                onChange={(e) => setNewMember({ ...newMember, description: e.target.value })}
+                className="bg-stone-200 border-2 rounded border-main w-[80%] h-52"
               />
-            </div>
-            <div className="flex justify-center col-span-2">
-              <button
-                onClick={handleAddMember}
-                className="bg-main px-4 py-2 text-white font-semibold rounded-lg shadow-md hover:bg-main/90 focus:outline-none focus:ring-2 focus:ring-main focus:ring-opacity-75"
-              >
-                Save
-              </button>
-            </div>
+            </label>
+            <button
+              type="button"
+              onClick={handleAddMember}
+              className="bg-green-700 hover:bg-green-600 text-white py-1 px-3 rounded-md"
+            >
+              Add Member
+            </button>
           </form>
         )}
       </div>
+
       <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 text-center">
         {members.map((member) => (
           <li
@@ -299,7 +266,7 @@ export default function TeamEdit() {
       {isEditing && (
         <div ref={editFormRef}>
           <h2 className="text-2xl place-items-center grid pb-4">Edit Member</h2>
-          <form className="md:grid md:grid-cols-2 gap-3 font-body">
+          <form className="grid md:grid-cols-2 gap-3 font-body">
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700">
                 Name:
@@ -307,9 +274,7 @@ export default function TeamEdit() {
               <input
                 type="text"
                 value={editedMember.name}
-                onChange={(e) =>
-                  setEditedMember({ ...editedMember, name: e.target.value })
-                }
+                onChange={(e) => setEditedMember({ ...editedMember, name: e.target.value })}
                 className="w-full bg-stone-200 px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
               />
             </div>
@@ -331,9 +296,7 @@ export default function TeamEdit() {
               <input
                 type="text"
                 value={editedMember.role}
-                onChange={(e) =>
-                  setEditedMember({ ...editedMember, role: e.target.value })
-                }
+                onChange={(e) => setEditedMember({ ...editedMember, role: e.target.value })}
                 className="w-full bg-stone-200 px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
               />
             </div>
@@ -344,9 +307,7 @@ export default function TeamEdit() {
               <input
                 type="text"
                 value={editedMember.major}
-                onChange={(e) =>
-                  setEditedMember({ ...editedMember, major: e.target.value })
-                }
+                onChange={(e) => setEditedMember({ ...editedMember, major: e.target.value })}
                 className="w-full bg-stone-200 px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
               />
             </div>
@@ -357,9 +318,7 @@ export default function TeamEdit() {
               <input
                 type="text"
                 value={editedMember.track}
-                onChange={(e) =>
-                  setEditedMember({ ...editedMember, track: e.target.value })
-                }
+                onChange={(e) => setEditedMember({ ...editedMember, track: e.target.value })}
                 className="w-full bg-stone-200 px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
               />
             </div>
@@ -370,9 +329,7 @@ export default function TeamEdit() {
               <input
                 type="text"
                 value={editedMember.graduation}
-                onChange={(e) =>
-                  setEditedMember({ ...editedMember, graduation: e.target.value })
-                }
+                onChange={(e) => setEditedMember({ ...editedMember, graduation: e.target.value })}
                 className="w-full bg-stone-200 px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
               />
             </div>
@@ -382,22 +339,22 @@ export default function TeamEdit() {
               </label>
               <textarea
                 value={editedMember.description}
-                onChange={(e) =>
-                  setEditedMember({ ...editedMember, description: e.target.value })
-                }
+                onChange={(e) => setEditedMember({ ...editedMember, description: e.target.value })}
                 className="w-full bg-stone-200 h-full px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
               />
             </div>
-            <div className="flex justify-center col-span-2">
+            <div className="flex space-x-4 items-center">
               <button
+                type="button"
                 onClick={handleSaveEdit}
-                className="bg-main px-4 py-2 text-white font-semibold rounded-lg shadow-md hover:bg-main/90 focus:outline-none focus:ring-2 focus:ring-main focus:ring-opacity-75"
+                className="h-10 px-4 py-2 font-semibold text-white bg-main rounded-md hover:bg-third focus:outline-none focus:ring focus:border-main"
               >
                 Save
               </button>
               <button
+                type="button"
                 onClick={handleCancelEdit}
-                className="bg-red-500 ml-4 px-4 py-2 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75"
+                className="h-10 px-4 py-2 font-semibold text-white bg-gray-400 rounded-md hover:bg-gray-500 focus:outline-none focus:ring focus:border-main"
               >
                 Cancel
               </button>

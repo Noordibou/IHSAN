@@ -55,8 +55,8 @@ function HomeBackgroundImage() {
       <div className='w-screen grid place-content-center'>
         {isLargeScreen ? (
           <Image
-            src="/group2.svg"
-            className="md:w-screen md:object-cover md:h-auto max-h-[550px] object-cover mix-blend-screen object-top saturate-150"
+            src="/groupNew.jpg"
+            className="md:w-screen md:object-cover md:h-screen max-h-screen object-cover object-bottom"
             width={1000}
             height={1000}
             quality={90}
@@ -88,8 +88,8 @@ function HomeBackgroundImage() {
       </div>
       <div className='w-screen grid place-content-center'>
         <Image
-          src="/group2.svg"
-          className="object-contain mix-blend-screen saturate-150 h-auto w-auto"
+          src="/groupNew.jpg"
+          className="object-contain mix-blend-screen h-auto w-auto"
           width={1000}
           height={1000}
           quality={90}

@@ -49,7 +49,17 @@ const MissionPage = () => {
           </div>
           <div className="md:w-1/2 px-4 md:px-8 border-dashed border-4 border-third rounded-xl py-4 bg-third/40">
             <p className="text-base font-body">
-              The mission of Ihsan for Healthcare is to empower and support students pursuing careers in healthcare by connecting them with enriching opportunities that will enhance their skills and strengthen their applications. We aim to nurture well-rounded, compassionate future healthcare professionals while also raising awareness and providing aid to underserved health systems globally. Our ultimate vision is a world where all communities have access to quality, affordable healthcare and where providers work collaboratively across borders to exchange knowledge and improve outcomes.
+            
+              Ihsan for Healthcare was founded to support students aspiring to
+            enter the healthcare setting post-graduation. The
+            organization&apos;s key objective is to connect students with
+            opportunities in employment, volunteer work, research, and
+            leadership designed to enhance their educational background, augment
+            their engagement, and strengthen their applications. Additionally,
+            we aim to contribute to the healthcare systems in developing nations
+            through awareness campaigns and fundraising efforts, thereby
+            facilitating the provision of essential supplies and assistance as
+            needed.
             </p>
           </div>
       </div>
