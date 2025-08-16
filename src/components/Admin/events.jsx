@@ -46,18 +46,35 @@ export default function EventEdit() {
   const [isFormVisible, setIsFormVisible] = useState(false);
   
   const handleAddEvent = () => {
-    createEvent(newEvent).then(() => {
-      fetchEvents();
-      setNewEvent({
-        name: "",
-        image: "",
-        date: "",
-        location: "",
-        category: "social",
-        description: "",
+    // Validate required fields
+    if (!newEvent.name.trim()) {
+      alert('Event name is required');
+      return;
+    }
+    
+    if (!newEvent.date) {
+      alert('Event date is required');
+      return;
+    }
+    
+    createEvent(newEvent)
+      .then(() => {
+        fetchEvents();
+        setNewEvent({
+          name: "",
+          image: "",
+          date: "",
+          location: "",
+          category: "social",
+          description: "",
+          number: "",
+        });
+        setIsFormVisible(false); // Hide the form after adding an event
+      })
+      .catch((error) => {
+        console.error('Error creating event:', error);
+        alert('Failed to create event. Please try again.');
       });
-      setIsFormVisible(false); // Hide the form after adding an event
-    });
   };
   
   const handleDeleteEvent = (id) => {
@@ -120,7 +137,14 @@ export default function EventEdit() {
     const file = e.target.files[0];
     setEditedEvent({ ...editedEvent, image: file });
   }
-  
+
+  // Helper function to get image source
+  const getImageSrc = (image) => {
+    if (!image) return '/placeholder-image.jpg'; // Add a placeholder image
+    if (typeof image === 'string' && image.startsWith('data:')) return image; // Base64 image
+    if (image instanceof File) return URL.createObjectURL(image); // File object
+    return '/placeholder-image.jpg'; // Fallback
+  };
 
   return (
     <div>
@@ -227,11 +251,11 @@ export default function EventEdit() {
           >
             <div className="flex flex-col">
               <img
-                src={`https://ihsanutd-backend.vercel.app/uploads/${event.image}`}
+                src={getImageSrc(event.image)}
                 height={500}
                 width={500}
                 alt="Event Image"
-                className="md:h-34 md:w-64 h-64  rounded-lg object-cover"
+                className="md:h-34 md:w-64 h-64 rounded-lg object-cover"
               />
             </div>
             <div className="flex flex-col">
@@ -314,7 +338,7 @@ export default function EventEdit() {
                     date: e.target.value ? new Date(e.target.value) : null,
                   })
                 }
-                className="bg-stone-200 w-full px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
+                className="w-full bg-stone-200 px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
               />
             </div>
 
@@ -327,14 +351,27 @@ export default function EventEdit() {
                 onChange={(e) =>
                   setEditedEvent({ ...editedEvent, category: e.target.value })
                 }
-                className="bg-stone-200 w-full px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
+                className="w-full bg-stone-200 px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
               >
                 <option value="social">Social</option>
                 <option value="workshop">Workshop</option>
                 <option value="volunteer">Volunteer</option>
                 <option value="other">Other</option>
-                {/* Add other categories as needed */}
               </select>
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700">
+                Location:
+              </label>
+              <input
+                type="text"
+                value={editedEvent.location}
+                onChange={(e) =>
+                  setEditedEvent({ ...editedEvent, location: e.target.value })
+                }
+                className="w-full bg-stone-200 px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
+              />
             </div>
 
             <div className="mb-4">
@@ -349,35 +386,22 @@ export default function EventEdit() {
                     description: e.target.value,
                   })
                 }
-                className="bg-stone-200 w-full h-48 px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
+                className="w-full bg-stone-200 px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main h-32"
               />
             </div>
 
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700">
-                Location:
-              </label>
-              <input
-                type="text"
-                value={editedEvent.location}
-                onChange={(e) =>
-                  setEditedEvent({ ...editedEvent, location: e.target.value })
-                }
-                className="bg-stone-200 w-full px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
-              />
-            </div>
-            <div className="flex space-x-4 items-center">
+            <div className="flex space-x-2">
               <button
                 type="button"
                 onClick={handleSaveEdit}
-                className="h-10 px-4 py-2 font-semibold text-white bg-main rounded-md hover:bg-third focus:outline-none focus:ring focus:border-main"
+                className="bg-green-700 hover:bg-green-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-200"
               >
-                Save
+                Save Changes
               </button>
               <button
                 type="button"
                 onClick={handleCancelEdit}
-                className="h-10 px-4 py-2 font-semibold text-white bg-gray-400 rounded-md hover:bg-gray-500 focus:outline-none focus:ring focus:border-main"
+                className="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 transition duration-200"
               >
                 Cancel
               </button>
@@ -385,7 +409,6 @@ export default function EventEdit() {
           </form>
         </div>
       )}
-
     </div>
   );
 }

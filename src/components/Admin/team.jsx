@@ -4,6 +4,12 @@ import { getMembers, createMember, updateMember, deleteMember } from "@/api/team
 
 export default function TeamEdit() {
   const [members, setMembers] = useState([]);
+  const [isFormVisible, setIsFormVisible] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+
   const [newMember, setNewMember] = useState({
     name: "",
     role: "",
@@ -14,7 +20,7 @@ export default function TeamEdit() {
     image: "",
     number: "",
   });
-  const [isEditing, setIsEditing] = useState(false);
+
   const [editedMember, setEditedMember] = useState({
     id: "",
     name: "",
@@ -26,7 +32,24 @@ export default function TeamEdit() {
     image: "",
     number: "",
   });
-  const [isFormVisible, setIsFormVisible] = useState(false);
+
+  // Simple file validation function
+  const validateImageFile = (file) => {
+    if (!file) {
+      return { valid: false, error: "No file selected" };
+    }
+    
+    if (!file.type.startsWith('image/')) {
+      return { valid: false, error: "Please select an image file" };
+    }
+    
+    if (file.size > 5 * 1024 * 1024) { // 5MB limit
+      return { valid: false, error: "File size must be less than 5MB" };
+    }
+    
+    return { valid: true };
+  };
+
   const editFormRef = useRef(null);
 
   useEffect(() => {
@@ -40,47 +63,104 @@ export default function TeamEdit() {
   }, [isEditing]);
 
   const fetchMembers = () => {
-    getMembers().then((response) => {
-      setMembers(response.data);
-    });
+    setIsLoading(true);
+    setError("");
+    setSuccessMessage("");
+    getMembers()
+      .then((response) => {
+        setMembers(response.data);
+      })
+      .catch((err) => {
+        setError("Failed to fetch members: " + (err.response?.data?.message || err.message));
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    setNewMember({ ...newMember, image: file });
+    if (file) {
+      // Validate file
+      const validation = validateImageFile(file);
+      if (!validation.valid) {
+        setError(validation.error);
+        return;
+      }
+
+      setNewMember({ ...newMember, image: file });
+      setError(""); // Clear any previous errors
+    }
   };
 
   const handleFileUploadEdit = (e) => {
     const file = e.target.files[0];
-    setEditedMember({ ...editedMember, image: file });
+    if (file) {
+      // Validate file
+      const validation = validateImageFile(file);
+      if (!validation.valid) {
+        setError(validation.error);
+        return;
+      }
+
+      setEditedMember({ ...editedMember, image: file });
+      setError(""); // Clear any previous errors
+    }
   };
 
   const handleAddMember = () => {
-    const formData = new FormData();
-    Object.keys(newMember).forEach((key) => {
-      formData.append(key, newMember[key]);
-    });
+    if (!newMember.name.trim()) {
+      setError("Name is required");
+      return;
+    }
 
-    createMember(formData).then(() => {
-      fetchMembers();
-      setNewMember({
-        name: "",
-        role: "",
-        major: "",
-        track: "",
-        graduation: "",
-        description: "",
-        image: "",
-        number: "",
+    setIsLoading(true);
+    setError("");
+    setSuccessMessage("");
+
+    createMember(newMember)
+      .then(() => {
+        fetchMembers();
+        setNewMember({
+          name: "",
+          role: "",
+          major: "",
+          track: "",
+          graduation: "",
+          description: "",
+          image: "",
+          number: "",
+        });
+        setIsFormVisible(false);
+        setSuccessMessage("Member added successfully!");
+      })
+      .catch((err) => {
+        console.error('Error creating member:', err);
+        setError("Failed to add member: " + (err.response?.data?.message || err.message));
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
-      setIsFormVisible(false);
-    });
   };
 
   const handleDeleteMember = (id) => {
-    deleteMember(id).then(() => {
-      fetchMembers();
-    });
+    if (window.confirm("Are you sure you want to delete this member?")) {
+      setIsLoading(true);
+      setError("");
+      setSuccessMessage("");
+
+      deleteMember(id)
+        .then(() => {
+          fetchMembers();
+          setSuccessMessage("Member deleted successfully!");
+        })
+        .catch((err) => {
+          setError("Failed to delete member: " + (err.response?.data?.message || err.message));
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    }
   };
 
   const handleEditMember = (member) => {
@@ -99,25 +179,38 @@ export default function TeamEdit() {
   };
 
   const handleSaveEdit = () => {
-    const formData = new FormData();
-    Object.keys(editedMember).forEach((key) => {
-      formData.append(key, editedMember[key]);
-    });
+    if (!editedMember.name.trim()) {
+      setError("Name is required");
+      return;
+    }
 
-    updateMember(editedMember.id, formData).then(() => {
-      fetchMembers();
-      setIsEditing(false);
-      setEditedMember({
-        id: "",
-        name: "",
-        role: "",
-        major: "",
-        track: "",
-        graduation: "",
-        description: "",
-        image: "",
+    setIsLoading(true);
+    setError("");
+    setSuccessMessage("");
+
+    updateMember(editedMember.id, editedMember)
+      .then(() => {
+        fetchMembers();
+        setIsEditing(false);
+        setEditedMember({
+          id: "",
+          name: "",
+          role: "",
+          major: "",
+          track: "",
+          graduation: "",
+          description: "",
+          image: "",
+          number: "",
+        });
+        setSuccessMessage("Member updated successfully!");
+      })
+      .catch((err) => {
+        setError("Failed to update member: " + (err.response?.data?.message || err.message));
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
-    });
   };
 
   const handleCancelEdit = () => {
@@ -131,12 +224,36 @@ export default function TeamEdit() {
       graduation: "",
       description: "",
       image: "",
+      number: "",
     });
+    setError("");
+  };
+
+  // Helper function to get image source
+  const getImageSrc = (image) => {
+    if (!image) return '/student.png'; // Default placeholder
+    if (typeof image === 'string' && image.startsWith('data:')) return image; // Base64 image
+    if (image instanceof File) return URL.createObjectURL(image); // File object
+    return '/student.png'; // Fallback
   };
 
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-4">Team</h2>
+      <h2 className="text-2xl font-bold mb-4">Team Members</h2>
+      
+      {/* Error and Success Messages */}
+      {error && (
+        <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+          {error}
+        </div>
+      )}
+      {successMessage && (
+        <div className="mb-4 p-3 bg-green-100 border border-green-400 text-green-700 rounded">
+          {successMessage}
+        </div>
+      )}
+
+      {/* Add new member form */}
       <div className="mb-6 flex flex-col justify-center items-center">
         <button
           onClick={() => setIsFormVisible(!isFormVisible)}
@@ -144,16 +261,69 @@ export default function TeamEdit() {
         >
           {isFormVisible ? "Cancel" : "Add New Member"}
         </button>
-
         {isFormVisible && (
-          <form className="flex flex-col gap-4">
+          <form className="flex flex-col gap-4 w-full max-w-md">
             <label>
-              Name:
+              Name: <span className="text-red-500">*</span>
               <input
                 type="text"
                 value={newMember.name}
                 onChange={(e) => setNewMember({ ...newMember, name: e.target.value })}
-                className="bg-stone-200 border-2 rounded border-main"
+                className="bg-stone-200 border-2 rounded border-main w-full"
+                required
+              />
+            </label>
+            <label>
+              Role:
+              <input
+                type="text"
+                value={newMember.role}
+                onChange={(e) => setNewMember({ ...newMember, role: e.target.value })}
+                className="bg-stone-200 border-2 rounded border-main w-full"
+              />
+            </label>
+            <label>
+              Major:
+              <input
+                type="text"
+                value={newMember.major}
+                onChange={(e) => setNewMember({ ...newMember, major: e.target.value })}
+                className="bg-stone-200 border-2 rounded border-main w-full"
+              />
+            </label>
+            <label>
+              Track:
+              <input
+                type="text"
+                value={newMember.track}
+                onChange={(e) => setNewMember({ ...newMember, track: e.target.value })}
+                className="bg-stone-200 border-2 rounded border-main w-full"
+              />
+            </label>
+            <label>
+              Graduation:
+              <input
+                type="text"
+                value={newMember.graduation}
+                onChange={(e) => setNewMember({ ...newMember, graduation: e.target.value })}
+                className="bg-stone-200 border-2 rounded border-main w-full"
+              />
+            </label>
+            <label>
+              Description:
+              <textarea
+                value={newMember.description}
+                onChange={(e) => setNewMember({ ...newMember, description: e.target.value })}
+                className="bg-stone-200 border-2 rounded border-main w-full h-32"
+              />
+            </label>
+            <label>
+              Number:
+              <input
+                type="number"
+                value={newMember.number}
+                onChange={(e) => setNewMember({ ...newMember, number: e.target.value })}
+                className="bg-stone-200 border-2 rounded border-main w-full"
               />
             </label>
             <label>
@@ -164,66 +334,21 @@ export default function TeamEdit() {
                 onChange={handleFileChange}
                 className="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
               />
-            </label>
-            <label>
-              Role:
-              <input
-                type="text"
-                value={newMember.role}
-                onChange={(e) => setNewMember({ ...newMember, role: e.target.value })}
-                className="bg-stone-200 border-2 rounded border-main"
-              />
-            </label>
-            <label>
-              Major:
-              <input
-                type="text"
-                value={newMember.major}
-                onChange={(e) => setNewMember({ ...newMember, major: e.target.value })}
-                className="bg-stone-200 border-2 rounded border-main"
-              />
-            </label>
-            <label>
-              Track:
-              <input
-                type="text"
-                value={newMember.track}
-                onChange={(e) => setNewMember({ ...newMember, track: e.target.value })}
-                className="bg-stone-200 border-2 rounded border-main"
-              />
-            </label>
-            <label>
-              Graduation:
-              <input
-                type="text"
-                value={newMember.graduation}
-                onChange={(e) => setNewMember({ ...newMember, graduation: e.target.value })}
-                className="bg-stone-200 border-2 rounded border-main"
-              />
-            </label>
-            <label>
-              Number:
-              <input
-                type="text"
-                value={newMember.number}
-                onChange={(e) => setNewMember({ ...newMember, number: e.target.value })}
-                className="bg-stone-200 border-2 rounded border-main"
-              />
-            </label>
-            <label>
-              Description:
-              <textarea
-                value={newMember.description}
-                onChange={(e) => setNewMember({ ...newMember, description: e.target.value })}
-                className="bg-stone-200 border-2 rounded border-main w-[80%] h-52"
-              />
+              <p className="text-xs text-gray-500 mt-1">
+                Supported formats: JPEG, PNG, GIF, WebP (max 5MB)
+              </p>
             </label>
             <button
               type="button"
               onClick={handleAddMember}
-              className="bg-green-700 hover:bg-green-600 text-white py-1 px-3 rounded-md"
+              disabled={isLoading}
+              className={`py-2 px-4 rounded-md focus:outline-none focus:ring-2 transition duration-200 ${
+                isLoading
+                  ? "bg-gray-400 cursor-not-allowed text-gray-600"
+                  : "bg-green-700 hover:bg-green-600 text-white focus:ring-green-400"
+              }`}
             >
-              Add Member
+              {isLoading ? "Adding..." : "Add Member"}
             </button>
           </form>
         )}
@@ -237,11 +362,14 @@ export default function TeamEdit() {
           >
             <div className="flex flex-col">
               <img
-                src={`https://ihsanutd-backend.vercel.app/uploads/${member.image}`}
+                src={getImageSrc(member.image)}
                 height={500}
                 width={500}
-                alt="Member Image"
+                alt={`${member.name} Image`}
                 className="md:h-34 md:w-64 h-64 rounded-lg object-cover"
+                onError={(e) => {
+                  e.target.src = '/student.png';
+                }}
               />
             </div>
             <div className="flex flex-col">
@@ -261,15 +389,25 @@ export default function TeamEdit() {
               <div className="flex space-x-2 mt-2">
                 <button
                   onClick={() => handleEditMember(member)}
-                  className="bg-yellow-500 hover:bg-yellow-600 text-white py-1 px-3 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400 transition duration-200"
+                  disabled={isLoading}
+                  className={`py-1 px-3 rounded-md focus:outline-none focus:ring-2 transition duration-200 ${
+                    isLoading
+                      ? "bg-gray-400 cursor-not-allowed text-gray-600"
+                      : "bg-yellow-500 hover:bg-yellow-600 text-white focus:ring-yellow-400"
+                  }`}
                 >
                   Edit
                 </button>
                 <button
                   onClick={() => handleDeleteMember(member._id)}
-                  className="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded-md focus:outline-none focus:ring-2 focus:ring-red-400 transition duration-200"
+                  disabled={isLoading}
+                  className={`py-1 px-3 rounded-md focus:outline-none focus:ring-2 transition duration-200 ${
+                    isLoading
+                      ? "bg-gray-400 cursor-not-allowed text-gray-600"
+                      : "bg-red-500 hover:bg-red-600 text-white focus:ring-red-400"
+                  }`}
                 >
-                  Delete
+                  {isLoading ? "Deleting..." : "Delete"}
                 </button>
               </div>
             )}
@@ -283,7 +421,7 @@ export default function TeamEdit() {
           <form className="grid md:grid-cols-2 gap-3 font-body">
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700">
-                Name:
+                Name: <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
@@ -302,7 +440,21 @@ export default function TeamEdit() {
                 onChange={handleFileUploadEdit}
                 className="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
               />
+              <p className="text-xs text-gray-500 mt-1">
+                Supported formats: JPEG, PNG, GIF, WebP (max 5MB)
+              </p>
+              {editedMember.image && (
+                <div className="mt-2">
+                  <p className="text-sm text-gray-600 mb-2">Preview:</p>
+                  <img
+                    src={getImageSrc(editedMember.image)}
+                    alt="Preview"
+                    className="w-20 h-20 object-cover rounded"
+                  />
+                </div>
+              )}
             </div>
+
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700">
                 Role:
@@ -314,6 +466,7 @@ export default function TeamEdit() {
                 className="w-full bg-stone-200 px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
               />
             </div>
+
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700">
                 Major:
@@ -325,6 +478,7 @@ export default function TeamEdit() {
                 className="w-full bg-stone-200 px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
               />
             </div>
+
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700">
                 Track:
@@ -336,6 +490,7 @@ export default function TeamEdit() {
                 className="w-full bg-stone-200 px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
               />
             </div>
+
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700">
                 Graduation:
@@ -352,7 +507,7 @@ export default function TeamEdit() {
                 Number:
               </label>
               <input
-                type="text"
+                type="number"
                 value={editedMember.number}
                 onChange={(e) => setEditedMember({ ...editedMember, number: e.target.value })}
                 className="w-full bg-stone-200 px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
@@ -365,21 +520,32 @@ export default function TeamEdit() {
               <textarea
                 value={editedMember.description}
                 onChange={(e) => setEditedMember({ ...editedMember, description: e.target.value })}
-                className="w-full bg-stone-200 h-full px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main"
+                className="w-full bg-stone-200 px-4 py-2 mt-1 border-2 rounded-md focus:outline-none focus:ring focus:border-main h-32"
               />
             </div>
-            <div className="flex space-x-4 items-center">
+
+            <div className="flex space-x-2">
               <button
                 type="button"
                 onClick={handleSaveEdit}
-                className="h-10 px-4 py-2 font-semibold text-white bg-main rounded-md hover:bg-third focus:outline-none focus:ring focus:border-main"
+                disabled={isLoading}
+                className={`py-2 px-4 rounded-md focus:outline-none focus:ring-2 transition duration-200 ${
+                  isLoading
+                    ? "bg-gray-400 cursor-not-allowed text-gray-600"
+                    : "bg-green-700 hover:bg-green-600 text-white focus:ring-green-400"
+                }`}
               >
-                Save
+                {isLoading ? "Saving..." : "Save Changes"}
               </button>
               <button
                 type="button"
                 onClick={handleCancelEdit}
-                className="h-10 px-4 py-2 font-semibold text-white bg-gray-400 rounded-md hover:bg-gray-500 focus:outline-none focus:ring focus:border-main"
+                disabled={isLoading}
+                className={`py-2 px-4 rounded-md focus:outline-none focus:ring-2 transition duration-200 ${
+                  isLoading
+                    ? "bg-gray-400 cursor-not-allowed text-gray-600"
+                    : "bg-gray-500 hover:bg-gray-600 text-white focus:ring-gray-400"
+                }`}
               >
                 Cancel
               </button>
