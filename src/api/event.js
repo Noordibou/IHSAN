@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = 'http://localhost:3001/api/event';
+const URL = 'https://ihsanutd-backend.vercel.app/api/event';
 
 export const getEvents = () => {
     return axios.get(URL);

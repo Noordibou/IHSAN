@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = 'http://localhost:3001/api/member';
+const URL = 'https://ihsanutd-backend.vercel.app/api/member';
 
 export const getMembers = () => {
     return axios.get(URL);
