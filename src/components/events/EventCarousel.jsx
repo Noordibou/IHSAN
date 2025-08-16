@@ -25,10 +25,23 @@ const EventCarousel = ({ events }) => {
     setPastEvents(past);
   }, [events]);
 
+  // Helper function to get image source
+  const getImageSrc = (image) => {
+    if (!image) return '/placeholder-image.jpg'; // Default placeholder
+    if (image.startsWith('data:')) return image; // Base64 image
+    return '/placeholder-image.jpg'; // Fallback
+  };
+
   const renderEventSlides = (eventList) => {
     return eventList.map((event, index) => (
       <SplideSlide key={index} className="event-slide flex flex-col items-center p-6 text-white rounded-2xl font-body md:h-auto bg-black/30">
-        <img src={`https://ihsanutd-backend.vercel.app/uploads/${event.image}`} height={500} width={500} alt="Event Image" className='md:h-64 md:w-80 w-screen h-64 rounded-lg object-cover' />
+        <img 
+          src={getImageSrc(event.image)} 
+          height={500} 
+          width={500} 
+          alt="Event Image" 
+          className='md:h-64 md:w-80 w-screen h-64 rounded-lg object-cover' 
+        />
         <h3 className='font-subTitle pt-2 text-xl md:text-2xl'>{event.name}</h3>
         <p className='font-body text-base font-light'>{formatDate(event.date)}</p>
       </SplideSlide>
@@ -36,46 +49,32 @@ const EventCarousel = ({ events }) => {
   };
 
   const renderCarousel = (eventList, title) => {
-    if (eventList.length === 0) {
-      return (
-        <p className='place-content-center grid font-cri text-xl font-semibold bg-third w-screen h-24 bg-opacity-40'>
-          COMING SOON
-        </p>
-      );
-    }
+    if (eventList.length === 0) return null;
 
+    // Disable loop and autoplay if there are fewer events than perPage
+    const shouldLoop = eventList.length > 3;
+    
     return (
-      <div className="mb-12">
-        {/* <h2 className="text-2xl font-bold mb-4 text-center">{title}</h2> */}
+      <div className="mb-8">
+        <h2 className="md:text-4xl text-[26px] font-semibold text-center font-title mb-8 mt-12 text-bodyColor uppercase">{title}</h2>
         <Splide
           options={{
-            type: 'slide',
-            gap: '1.5rem',
-            pagination: true,
-            arrows: true,
-            perPage: 3,
-            padding: {
-              right: '3rem',
-              left: '2rem',
-            },
+            type: shouldLoop ? 'loop' : 'slide',
+            perPage: Math.min(eventList.length, 3),
+            gap: '1rem',
+            autoplay: shouldLoop,
+            interval: 5000,
+            rewind: !shouldLoop,
             breakpoints: {
               768: {
-                perPage: 1,
-                padding: {
-                  right: '1rem',
-                  left: '1rem',
-                },
+                perPage: Math.min(eventList.length, 2),
               },
-              1024: {
-                perPage: 2,
-                padding: {
-                  right: '1rem',
-                  left: '1rem',
-                },
+              480: {
+                perPage: 1,
               },
             },
           }}
-          className="mx-6 md:mx-10 pb:6 md:pb-12 md:p-8 pb-12 px-8 w-screen"
+          className="event-carousel mx-6 md:mx-10 pb:6 md:pb-12 md:p-8 pb-12 px-8 w-screen"
         >
           {renderEventSlides(eventList)}
         </Splide>
@@ -84,8 +83,12 @@ const EventCarousel = ({ events }) => {
   };
 
   return (
-    <div>
-      {renderCarousel(currentEvents)}
+    <div className="event-carousel-container">
+      {/* Show upcoming events if available, otherwise show past events */}
+      {currentEvents.length > 0 
+        ? renderCarousel(currentEvents, 'UPCOMING EVENTS')
+        : renderCarousel(pastEvents, 'PAST EVENTS')
+      }
     </div>
   );
 };
