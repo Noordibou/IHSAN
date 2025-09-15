@@ -81,7 +81,7 @@ const Footer = () => {
       <div className="w-full border-2 border-dark-red my-2" />
       <div className="flex justify-between lg:gap-48 xl:gap-72">
         <div className="text-neutral-50 md:text-sm text-[10px] font-normal font-osans py-2">
-          © 2023 Ihsan Healthcare Association at the University of Texas at Dallas. All rights reserved. Privacy Policy
+          © 2023 UTD Healthcare Association (IHSAN) at the University of Texas at Dallas. All rights reserved. Privacy Policy
         </div>
       </div>
     </div>

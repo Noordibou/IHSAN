@@ -55,20 +55,20 @@ function HomeBackgroundImage() {
       {isLargeScreen ? (
         <div className='absolute w-[65%] md:w-auto top-2/3 left-1/3 transform -translate-x-1/2 md:-translate-y-1/2 text-start lg:-translate-y-1/3 text-white pl-8 rounded'>
           <h1 className='md:text-[52px] lg:text-[68px] font-bold font-title text-bodyColor uppercase leading-[1]'>
-            Welcome to IHA
+            Welcome to IHSAN
           </h1>
           <p className='md:text-[26px] lg:[32px] leading-[1] mb-2 text-secondary font-title pl-4'>
-            Ihsan Healthcare Association at the University of Texas at Dallas
+            UTD Healthcare Association at the University of Texas at Dallas
           </p>
           <Button />
         </div>
       ) : (
         <div className='absolute inset-0 flex flex-col items-center justify-center px-5'>
           <h1 className='text-center text-[34px] font-semibold mb-2 font-title uppercase tracking-[10px] text-white'>
-            Welcome to IHA
+            Welcome to IHSAN
           </h1>
           <p className='text-2xl mb-4 text-white font-title text-center'>
-            Ihsan Healthcare Association at University of Texas at Dallas
+            UTD Healthcare Association at University of Texas at Dallas
           </p>
           <Button />
         </div>

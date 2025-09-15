@@ -6,7 +6,7 @@ const teamMembers = [
     track: "Pre-Med",
     graduation: "2023",
     description:
-      "I am most excited about meeting the new members of IHA and the Ramadan Social event. Outside of School, I am an Undergraduate Research Assistant for Interventional Cardiology at Medical City Fort Worth.I am a certified EMT and also volunteer at UTSW. In my free time, I enjoy wrestling with friends, hanging out with family, and trying out new Middle Eastern cafe spots. Fun fact I have 7 siblings.",
+      "I am most excited about meeting the new members of IHSAN and the Ramadan Social event. Outside of School, I am an Undergraduate Research Assistant for Interventional Cardiology at Medical City Fort Worth.I am a certified EMT and also volunteer at UTSW. In my free time, I enjoy wrestling with friends, hanging out with family, and trying out new Middle Eastern cafe spots. Fun fact I have 7 siblings.",
     image: "/omar.jpg",
   },
   {
@@ -35,7 +35,7 @@ const teamMembers = [
     track: "Pre-Dental",
     graduation: "Fall 2025",
     description:
-      "I look forward to serving on the board this year, welcoming new members to IHA, and contributing to create a supportive environment for pre-health students. Outside of college, I work as a registered dental assistant (RDA) in a general practice and volunteer at a dental clinic that offers free services for low-income residents. In my free time, I like to draw/paint, hang out with friends and family, and try out new cuisines. ",
+      "I look forward to serving on the board this year, welcoming new members to IHSAN, and contributing to create a supportive environment for pre-health students. Outside of college, I work as a registered dental assistant (RDA) in a general practice and volunteer at a dental clinic that offers free services for low-income residents. In my free time, I like to draw/paint, hang out with friends and family, and try out new cuisines. ",
     image: "/ayah.jpg",
   },
   {
@@ -45,7 +45,7 @@ const teamMembers = [
     track: "Pre-Health",
     graduation: "2026",
     description:
-      "I am a Neuroscience major on the pre Health track expected to graduate in 2026! I like to play volleyball when I get the chance and I also love to read. I am currently an undergraduate research assistant for Dr. Price Pain Lab here at UTD. I can’t wait to see everyone come together through IHSAN and build a community between everyone on the various health tracks.",
+      "I am a Neuroscience major on the pre Health track expected to graduate in 2026! I like to play volleyball when I get the chance and I also love to read. I am currently an undergraduate research assistant for Dr. Price Pain Lab here at UTD. I can't wait to see everyone come together through IHSAN and build a community between everyone on the various health tracks.",
     image: "/warda.jpg",
   },
   {
