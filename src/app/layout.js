@@ -21,7 +21,7 @@ const arimo = Arimo({
 });
 
 export const metadata = {
-  title: "UTD Healthcare Association IHSAN",
+  title: "UTD Healthcare Association",
   description:
     "UTD Healthcare Association IHSAN was created to uplift students with plans to pursue healthcare post-graduation.",
   robots: {
